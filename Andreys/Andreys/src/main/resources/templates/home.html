@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/commons::head"></head>
+<body>
+        <header th:replace="fragments/commons::homeNav"></header>
+    <main>
+        <h1 class="text-center mt-2"><span class="badge badge-pill badge-dark">Products</span></h1>
+        <hr class="hr-3"/>
+        <div th:each="p : ${allProducts}" th:object="${p}" class="bg-blur container w-50">
+            <div class="row mb-4 d-flex flex-column text-center">
+                <a th:href="@{/products/details/{name} (name = *{name})}"><img library="img" th:src="'/img/' + *{sex} + '-' + *{category} + '.jpg'" class="img-thumbnail" width="200"
+                      height="200"/>
+                </a>
+                 <h5 class="text-center" th:text="*{name}"></h5>
+                <h2 class="text-center" th:text="*{price}"></h2>
+            </div>
+        </div>
+    </main>
+    <span style="visibility: hidden">...</span>
+        <footer th:replace="fragments/commons::footer"></footer>
+</body>
+</html>

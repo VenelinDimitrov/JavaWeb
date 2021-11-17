@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/commons::head"></head>
+<body>
+        <header th:replace="fragments/commons::homeNav"></header>
+    <main>
+        <h1 class="text-center mt-2"><span class="badge badge-pill badge-dark">Add Product</span></h1>
+        <hr class="hr-3"/>
+        <form class="mx-auto w-25 bg-blur" th:action="@{/products/add}" th:method="POST" th:object="${addProductBindingModel}">
+            <div class="form-group">
+                <div class="text-white label-holder d-flex justify-content-center">
+                    <label for="name" class="h4 mb-2">Name</label>
+                </div>
+                <input th:field="*{name}" type="text" class="form-control" id="name" name="name"/>
+            </div>
+            <div class="form-group">
+                <div class="text-white label-holder d-flex justify-content-center">
+                    <label for="description" class="h4 mb-2">Description</label>
+                </div>
+                <input th:field="*{description}" type="text" class="form-control" id="description" name="description"/>
+            </div>
+            <div class="form-group">
+                <div class="text-white label-holder d-flex justify-content-center">
+                    <label for="category" class="h4 mb-2">Category</label>
+                </div>
+                <select th:field="*{category}" styleClass="browser-default custom-select" id="category">
+                    <option th:each="c : ${T(com.example.andreys.model.entity.enums.CategoryEnum).values()}" th:value="${c}" th:text="${c}">Shirt</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <div class="text-white label-holder d-flex justify-content-center">
+                    <label for="sex" class="h4 mb-2">Sex</label>
+                </div>
+                <select th:field="*{sex}" styleClass="browser-default custom-select" id="sex">
+                    <option th:each="s : ${T(com.example.andreys.model.entity.enums.SexEnum).values()}" th:value="${s}" th:text="${s}">Male</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <div class="text-white label-holder d-flex justify-content-center">
+                    <label for="price" class="h4 mb-2">Price</label>
+                </div>
+                <input th:field="*{price}" type="number" class="form-control" id="price" name="price"/>
+            </div>
+            <div class="button-holder d-flex justify-content-center">
+                <button type="submit" class="btn btn-secondary text-white mb-3">Add Product</button>
+            </div>
+        </form>
+    </main>
+        <footer th:replace="fragments/commons::footer"></footer>
+</body>
+</html>
