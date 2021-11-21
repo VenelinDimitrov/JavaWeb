@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/fragments/commons::head"></head>
+<body>
+
+<main>
+    <header th:replace="/fragments/commons::nav"></header>
+
+    <div id="address-container" class="container">
+        <div>
+            <h2 class="header">Contact Us</h2>
+            <p>Swing by for a cup of coffee, give us a call or email us.</p>
+        </div>
+        <div id="address-row" class="row">
+            <div class="column">
+                <img id="address-img" src="/img/address.jpg" alt="">
+            </div>
+            <div class="column">
+                <p>Address: ul. "Promyana" 2021</p>
+                <p>Working hours: Monday - Friday from 09:00 to 17:00</p>
+                <p>Phone number: 0898 43 72 32</p>
+                <p>Email: support@beardculture.com</p>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer th:replace="/fragments/commons::footer"></footer>
+</body>
+</html>

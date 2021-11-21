@@ -58,6 +58,20 @@
     align-content: center;
 }
 
+#address-img{
+    width: 500px;
+    height: 500px;
+}
+
+#address-container{
+    text-align: center;
+}
+#address-row div{
+    padding: 10px;
+    display: inline-block;
+}
+
+
 .footer-basic {
     padding:20px 0;
     background-color:#FFD700;
