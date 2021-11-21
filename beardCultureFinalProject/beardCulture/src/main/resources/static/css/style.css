@@ -48,6 +48,16 @@
     color: #FFD700;
 }
 
+.login-form{
+    padding: 100px 400px 200px 400px;
+    align-content: center;
+}
+
+.login-form button:hover{
+    background-color: #404040;
+    color: #FFD700;
+}
+
 .footer-basic {
     padding:20px 0;
     background-color:#FFD700;
