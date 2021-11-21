@@ -15,4 +15,9 @@ public class HomeController {
     public String contacts() {
         return "contact-us";
     }
+
+    @GetMapping("/privacy")
+    public String privacy() {
+        return "privacy-policy";
+    }
 }

@@ -71,6 +71,9 @@
     display: inline-block;
 }
 
+.privacy-policy{
+    padding: 20px;
+}
 
 .footer-basic {
     padding:20px 0;
