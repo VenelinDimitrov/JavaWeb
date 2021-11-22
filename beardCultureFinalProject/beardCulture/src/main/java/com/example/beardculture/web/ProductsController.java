@@ -18,6 +18,11 @@ public class ProductsController {
         return "balms";
     }
 
+    @GetMapping("/gear")
+    public String gearPage(){
+        return "gear";
+    }
+
     @GetMapping("/add")
     public String addProduct(){
         return "add-product";
