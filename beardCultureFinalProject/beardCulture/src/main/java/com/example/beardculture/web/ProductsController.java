@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/products")
-public class productsController {
+public class ProductsController {
 
     @GetMapping("/oils")
     public String oilsPage(){
@@ -16,5 +16,10 @@ public class productsController {
     @GetMapping("/balms")
     public String balmsPage(){
         return "balms";
+    }
+
+    @GetMapping("/add")
+    public String addProduct(){
+        return "add-product";
     }
 }
