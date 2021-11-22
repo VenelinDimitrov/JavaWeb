@@ -68,6 +68,20 @@
     height: 300px;
 }
 
+.product-image img{
+    width: 60%;
+    height: 60%;
+    margin: 50px 50px 100px 150px;
+}
+
+.product-details{
+    margin-block: auto;
+}
+
+.description{
+    margin-right: 50px;
+}
+
 #address-img{
     width: 500px;
     height: 500px;

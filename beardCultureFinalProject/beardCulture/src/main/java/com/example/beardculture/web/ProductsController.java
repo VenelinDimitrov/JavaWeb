@@ -27,4 +27,9 @@ public class ProductsController {
     public String addProduct(){
         return "add-product";
     }
+
+    @GetMapping("/details")
+    public String productDetails(){
+        return "product-details";
+    }
 }
