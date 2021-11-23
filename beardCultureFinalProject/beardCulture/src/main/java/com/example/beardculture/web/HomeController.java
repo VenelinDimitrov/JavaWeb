@@ -25,4 +25,9 @@ public class HomeController {
     public String about() {
         return "about";
     }
+
+    @GetMapping("/terms")
+    public String terms() {
+        return "terms";
+    }
 }
