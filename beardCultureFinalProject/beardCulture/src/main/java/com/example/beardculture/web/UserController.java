@@ -17,4 +17,9 @@ public class UserController {
     public String register(){
         return "register";
     }
+
+    @GetMapping("/account")
+    public String myAccount() {
+        return "my-account";
+    }
 }

@@ -82,6 +82,30 @@
     margin-right: 50px;
 }
 
+.active-btn{
+    background-color: #404040;
+    color: #FFD700;
+}
+
+.my-account-page{
+    padding: 100px 200px 200px 200px;
+}
+
+.my-account-btn{
+    height: 50px;
+    width: 200px;
+}
+
+.divider{
+    width:auto;
+    height:5px;
+    display:inline-block;
+}
+
+.remove-from-box-btn{
+    margin-left: 120px;
+}
+
 #address-img{
     width: 500px;
     height: 500px;
