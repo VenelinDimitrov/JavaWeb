@@ -64,8 +64,8 @@
 }
 
 .card-img-top{
-    width: 300px;
-    height: 300px;
+    width: 280px;
+    height: 280px;
 }
 
 .product-image img{
@@ -85,6 +85,7 @@
 .active-btn{
     background-color: #404040;
     color: #FFD700;
+
 }
 
 .my-account-page{
@@ -104,6 +105,11 @@
 
 .remove-from-box-btn{
     margin-left: 120px;
+}
+
+.admin-panel-buttons{
+    text-align: center;
+    padding: 0 0 70px 0;
 }
 
 #address-img{

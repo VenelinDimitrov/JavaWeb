@@ -22,4 +22,9 @@ public class UserController {
     public String myAccount() {
         return "my-account";
     }
+
+    @GetMapping("/admin")
+    public String adminPanel() {
+        return "admin-panel";
+    }
 }

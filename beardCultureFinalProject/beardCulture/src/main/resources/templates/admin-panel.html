@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/fragments/commons::head"></head>
+<body>
+<header th:replace="/fragments/commons::nav"></header>
+
+<main>
+    <h2 class="header">Beard Culture Admin Panel</h2>
+
+    <section class="mb-5 my-account-page">
+
+        <div class="admin-panel-buttons">
+            <button type="button" class="btn my-account-btn active-btn" data-bs-toggle="button" aria-pressed="true">
+                My subscription box
+            </button>
+            <button type="button" class="btn my-account-btn" data-bs-toggle="button">My Details</button>
+        </div>
+
+        <div class="admin-orders-view">
+            <section class="subscription-items visually-hidden">
+                <div class="card" style="width: 30rem;">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item" style="width: 400px">
+                            Total orders count:
+                        </li>
+                        <li class="list-group-item" style="width: 400px">
+                            Total orders amount in &euro;:
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+
+
+        <div class="admin-rights-modifier">
+            <form>
+                <div class="form-group">
+                    <label for="userEmail">Email address of User</label>
+                    <input type="email" class="form-control" id="userEmail" aria-describedby="emailHelp"
+                           placeholder="Enter email">
+                    <small id="emailHelp" class="form-text text-muted">The below specified rights will be granted to
+                        this user.</small>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Grant Rights as:</label>
+                    <select class="form-control" id="exampleFormControlSelect1">
+                        <option>Moderator</option>
+                        <option>Administrator</option>
+                    </select>
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary">Grant Rights</button>
+            </form>
+        </div>
+    </section>
+
+</main>
+
+<footer th:replace="/fragments/commons::footer"></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous">
+</script>
+</body>
+</html></title>
+</head>
+<body>
+
+</body>
+</html>
