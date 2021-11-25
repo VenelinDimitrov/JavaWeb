@@ -12,19 +12,19 @@
         <div class="row">
             <div class="col-md-6 mb-4 mb-md-0">
 
-                <button type="button" class="btn my-account-btn active-btn" data-bs-toggle="button" aria-pressed="true">
+                <button type="button" id="my-box-btn" class="btn my-account-btn active-btn" data-bs-toggle="button" aria-pressed="true">
                     My subscription box
                 </button>
                 <br>
                 <div class="divider"></div>
                 <br>
-                <button type="button" class="btn my-account-btn" data-bs-toggle="button">My Details</button>
+                <button type="button" id="my-user-details-btn" class="btn my-account-btn" data-bs-toggle="button">My Details</button>
 
             </div>
             <div class="col-md-6">
                 <!--                Hide and show the information base on which button is chosen-->
                 <!--                User Details-->
-                <form class="px-4 py-3">
+                <form class="px-4 py-3 visually-hidden" id="my-user-details-form">
                     <div class="mb-3">
                         <label class="form-label">Email address</label>
                         <input type="email" class="form-control" placeholder="email@example.com">
@@ -38,25 +38,25 @@
                         <input type="text" class="form-control" placeholder="Address">
                     </div>
                     <button type="submit" class="btn btn-primary">Update Details</button>
-                    <form>
+                </form>
 
 
-                        <!--                Subscription box-->
-                        <section class="subscription-items visually-hidden">
-                            <div class="card" style="width: 30rem;">
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item" style="width: 400px">1st product
-                                        <button class="btn remove-from-box-btn">Remove from box</button>
-                                    </li>
-                                    <li class="list-group-item" style="width: 400px">2nd product
-                                        <button class="btn remove-from-box-btn">Remove from box</button>
-                                    </li>
-                                    <li class="list-group-item" style="width: 400px">3rd product
-                                        <button class="btn remove-from-box-btn">Remove from box</button>
-                                    </li>
-                                </ul>
-                            </div>
-                        </section>
+                <!--                Subscription box-->
+                <section class="subscription-items">
+                    <div class="card" style="width: 30rem;">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item" style="width: 400px">1st product
+                                <button class="btn remove-from-box-btn">Remove from box</button>
+                            </li>
+                            <li class="list-group-item" style="width: 400px">2nd product
+                                <button class="btn remove-from-box-btn">Remove from box</button>
+                            </li>
+                            <li class="list-group-item" style="width: 400px">3rd product
+                                <button class="btn remove-from-box-btn">Remove from box</button>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
             </div>
         </div>
 
@@ -70,10 +70,6 @@
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous">
 </script>
-</body>
-</html></title>
-</head>
-<body>
-
+<script src="/js/myAccountPanel.js"></script>
 </body>
 </html>
