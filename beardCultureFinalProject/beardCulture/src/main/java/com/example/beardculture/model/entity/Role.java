@@ -13,7 +13,6 @@ public class Role extends BaseEntity{
     public Role() {
     }
 
-    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     public RoleNameEnum getRole() {
         return role;

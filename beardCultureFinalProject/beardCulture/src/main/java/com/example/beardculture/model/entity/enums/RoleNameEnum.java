@@ -1,7 +1,7 @@
 package com.example.beardculture.model.entity.enums;
 
 public enum RoleNameEnum {
-    USER,
+    ADMIN,
     MODERATOR,
-    ADMIN
+    USER
 }

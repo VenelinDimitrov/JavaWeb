@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -18,6 +19,7 @@ public class User extends BaseEntity {
     private Set<Role> roles;
 
     public User() {
+        this.roles = new HashSet<>();
     }
 
     @Column(nullable = false)
