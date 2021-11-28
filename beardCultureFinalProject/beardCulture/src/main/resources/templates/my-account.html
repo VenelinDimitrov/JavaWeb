@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+                xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="/fragments/commons::head"></head>
 <body>
 <header th:replace="/fragments/commons::nav"></header>
 
 <main>
-    <h2 class="header">Welcome home, Pesho!</h2>
+    <h2 class="header">Welcome home,
+        <span sec:authorize="isAuthenticated()" sec:authentication="name"></span>!
+    </h2>
 
     <section class="mb-5 my-account-page">
 
