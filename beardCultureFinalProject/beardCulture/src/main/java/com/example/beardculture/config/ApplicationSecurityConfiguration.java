@@ -1,5 +1,6 @@
 package com.example.beardculture.config;
 
+import com.example.beardculture.model.entity.enums.RoleNameEnum;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -30,6 +31,7 @@ public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapt
                 // The next line allows access to the home page, login page and registration page for everyone
                 .antMatchers("/", "/users/login", "/users/register", "/products/oils",
                         "/products/balms", "/products/gear", "/contacts", "/about", "/terms", "/privacy").permitAll()
+                .antMatchers("/users/admin").hasRole(RoleNameEnum.ADMIN.name())
                 // Next we forbid all other pages for unauthenticated users
                 .antMatchers("/**").authenticated()
                 .and()
