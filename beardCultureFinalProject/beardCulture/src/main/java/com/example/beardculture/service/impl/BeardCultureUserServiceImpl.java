@@ -7,10 +7,12 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Service
 public class BeardCultureUserServiceImpl implements UserDetailsService {
 
     private UserRepository userRepository;
@@ -20,11 +22,10 @@ public class BeardCultureUserServiceImpl implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String userEmail) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        User user = userRepository.findByEmail(userEmail)
-                .orElseThrow( () -> new UsernameNotFoundException("User with email " + userEmail + " not found!"));
-
+        User user = userRepository.findByUsername(username)
+                .orElseThrow( () -> new UsernameNotFoundException("User with username " + username + " not found!"));
 
 
         return mapToUserDetails(user);
@@ -38,7 +39,7 @@ public class BeardCultureUserServiceImpl implements UserDetailsService {
                 .collect(Collectors.toList());
 
         return new org.springframework.security.core.userdetails.User(
-                user.getEmail(),
+                user.getUsername(),
                 user.getPassword(),
                 authorities
         );

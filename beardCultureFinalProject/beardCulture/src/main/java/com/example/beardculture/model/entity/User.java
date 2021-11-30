@@ -1,9 +1,6 @@
 package com.example.beardculture.model.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -58,7 +55,7 @@ public class User extends BaseEntity {
         this.password = password;
     }
 
-    @OneToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     public Set<Role> getRoles() {
         return roles;
     }

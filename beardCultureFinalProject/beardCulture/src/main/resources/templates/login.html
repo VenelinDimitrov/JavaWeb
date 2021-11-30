@@ -7,7 +7,7 @@
 <header th:replace="/fragments/commons::nav"></header>
 
 <main class="login-and-register-form">
-    <form class="px-4 py-3" th:method="post" th:action="@{/users/login}">
+    <form class="px-4 py-3" th:action="@{/users/login}" th:method="POST">
         <div class="mb-3">
             <label for="username" class="form-label">Username</label>
             <input type="text"
@@ -20,6 +20,7 @@
                    placeholder="Password">
         </div>
         <button type="submit" class="btn btn-primary">Login</button>
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     </form>
     <br>
     <div>New around here? <a href="/users/register">Register</a></div>
