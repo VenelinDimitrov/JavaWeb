@@ -2,29 +2,33 @@ package com.example.beardculture.model.binding;
 
 import com.example.beardculture.model.entity.enums.CategoryNameEnum;
 
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 
 public class AddProductBindingModel {
 
-    private String productName;
+    private String name;
     private String description;
-    private String manufacturer;
     private CategoryNameEnum category;
     private Integer quantity;
     private BigDecimal price;
+    private String manufacturer;
     private String imageUrl;
 
     public AddProductBindingModel() {
     }
 
+    @Size(min = 3)
     public String getProductName() {
-        return productName;
+        return name;
     }
 
     public void setProductName(String productName) {
-        this.productName = productName;
+        this.name = productName;
     }
 
+    @Size(min = 5)
     public String getDescription() {
         return description;
     }
@@ -49,6 +53,7 @@ public class AddProductBindingModel {
         this.category = category;
     }
 
+    @Positive
     public Integer getQuantity() {
         return quantity;
     }
@@ -57,6 +62,7 @@ public class AddProductBindingModel {
         this.quantity = quantity;
     }
 
+    @Positive
     public BigDecimal getPrice() {
         return price;
     }
@@ -72,4 +78,5 @@ public class AddProductBindingModel {
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
+
 }

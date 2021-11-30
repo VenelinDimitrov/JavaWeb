@@ -1,15 +1,14 @@
-package com.example.beardculture.model.entity;
+package com.example.beardculture.model.service;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import com.example.beardculture.model.entity.Category;
+import com.example.beardculture.model.entity.Manufacturer;
+import com.example.beardculture.model.entity.Subscription;
+
 import java.math.BigDecimal;
 
-@Entity
-@Table(name = "products")
-public class Product extends BaseEntity{
+public class AddProductServiceModel {
 
+    private Long id;
     private String name;
     private String description;
     private Category category;
@@ -19,10 +18,17 @@ public class Product extends BaseEntity{
     private String imageUrl;
     private Subscription subscription;
 
-    public Product() {
+    public AddProductServiceModel() {
     }
 
-    @Column(nullable = false)
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }
@@ -31,7 +37,6 @@ public class Product extends BaseEntity{
         this.name = name;
     }
 
-    @Column(nullable = false, columnDefinition = "TEXT")
     public String getDescription() {
         return description;
     }
@@ -40,43 +45,6 @@ public class Product extends BaseEntity{
         this.description = description;
     }
 
-    @Column(nullable = false)
-    public Integer getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
-    }
-
-    @Column(nullable = false)
-    public BigDecimal getPrice() {
-        return price;
-    }
-
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
-
-    @ManyToOne
-    public Manufacturer getManufacturer() {
-        return manufacturer;
-    }
-
-    public void setManufacturer(Manufacturer manufacturer) {
-        this.manufacturer = manufacturer;
-    }
-
-    @Column(nullable = false)
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
-    @ManyToOne
     public Category getCategory() {
         return category;
     }
@@ -85,7 +53,38 @@ public class Product extends BaseEntity{
         this.category = category;
     }
 
-    @ManyToOne
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
+    public Manufacturer getManufacturer() {
+        return manufacturer;
+    }
+
+    public void setManufacturer(Manufacturer manufacturer) {
+        this.manufacturer = manufacturer;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
     public Subscription getSubscription() {
         return subscription;
     }
