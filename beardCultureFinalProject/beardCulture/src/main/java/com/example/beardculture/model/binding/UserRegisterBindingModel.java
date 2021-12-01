@@ -1,5 +1,9 @@
 package com.example.beardculture.model.binding;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class UserRegisterBindingModel {
 
     private String firstName;
@@ -12,6 +16,7 @@ public class UserRegisterBindingModel {
     public UserRegisterBindingModel() {
     }
 
+    @NotNull
     public String getFirstName() {
         return firstName;
     }
@@ -28,6 +33,8 @@ public class UserRegisterBindingModel {
         this.lastName = lastName;
     }
 
+    @Size(min = 3)
+    @NotNull
     public String getUsername() {
         return username;
     }
@@ -36,6 +43,8 @@ public class UserRegisterBindingModel {
         this.username = username;
     }
 
+    @Email
+    @NotNull
     public String getEmail() {
         return email;
     }
@@ -44,6 +53,7 @@ public class UserRegisterBindingModel {
         this.email = email;
     }
 
+    @Size(min = 3)
     public String getPassword() {
         return password;
     }
@@ -52,6 +62,7 @@ public class UserRegisterBindingModel {
         this.password = password;
     }
 
+    @Size(min = 3)
     public String getRepeatPassword() {
         return repeatPassword;
     }

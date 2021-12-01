@@ -11,6 +11,8 @@ import com.example.beardculture.service.ProductService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import javax.validation.Valid;
+
 @Service
 public class ProductServiceImpl implements ProductService {
 
@@ -27,7 +29,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public AddProductServiceModel addProduct(AddProductBindingModel addProductBindingModel) {
+    public AddProductServiceModel addProduct(@Valid AddProductBindingModel addProductBindingModel) {
         Product product = modelMapper.map(addProductBindingModel, Product.class);
 
         Manufacturer manufacturer = new Manufacturer();
@@ -37,8 +39,7 @@ public class ProductServiceImpl implements ProductService {
 
         product.setManufacturer(manufacturer);
 
-        // TODO: save manufacturer and implement logic to check if such already exists. If it does, then just assign it without creating a new one.
-        // TODO: Check if Subscription is necessary in the Product entity and remove if not.
+
         // TODO: Finish implementing the Add product function
 
         return new AddProductServiceModel();
