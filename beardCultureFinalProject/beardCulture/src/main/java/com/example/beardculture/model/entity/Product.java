@@ -17,7 +17,7 @@ public class Product extends BaseEntity{
     private BigDecimal price;
     private Manufacturer manufacturer;
     private String imageUrl;
-    private Subscription subscription;
+
 
     public Product() {
     }
@@ -83,14 +83,5 @@ public class Product extends BaseEntity{
 
     public void setCategory(Category category) {
         this.category = category;
-    }
-
-    @ManyToOne
-    public Subscription getSubscription() {
-        return subscription;
-    }
-
-    public void setSubscription(Subscription subscription) {
-        this.subscription = subscription;
     }
 }

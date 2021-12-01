@@ -8,12 +8,12 @@ import java.util.Set;
 public class Subscription extends BaseEntity{
 
     private User user;
-    private Set<Product> subscriptionBox;
+    private Set<Product> productsInSubscription;
 
     public Subscription() {
     }
 
-    @ManyToOne
+    @OneToOne
     public User getUser() {
         return user;
     }
@@ -22,12 +22,12 @@ public class Subscription extends BaseEntity{
         this.user = user;
     }
 
-    @OneToMany(mappedBy = "subscription", fetch = FetchType.EAGER)
-    public Set<Product> getSubscriptionBox() {
-        return subscriptionBox;
+    @ManyToMany()
+    public Set<Product> getProductsInSubscription() {
+        return productsInSubscription;
     }
 
-    public void setSubscriptionBox(Set<Product> subscriptionBox) {
-        this.subscriptionBox = subscriptionBox;
+    public void setProductsInSubscription(Set<Product> subscriptionBox) {
+        this.productsInSubscription = subscriptionBox;
     }
 }

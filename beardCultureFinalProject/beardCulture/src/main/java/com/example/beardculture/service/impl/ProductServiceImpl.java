@@ -6,6 +6,7 @@ import com.example.beardculture.model.entity.Product;
 import com.example.beardculture.model.service.AddProductServiceModel;
 import com.example.beardculture.repository.ProductRepository;
 import com.example.beardculture.service.CategoryService;
+import com.example.beardculture.service.ManufacturerService;
 import com.example.beardculture.service.ProductService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -16,11 +17,13 @@ public class ProductServiceImpl implements ProductService {
     private final ProductRepository productRepository;
     private final ModelMapper modelMapper;
     private final CategoryService categoryService;
+    private final ManufacturerService manufacturerService;
 
-    public ProductServiceImpl(ProductRepository productRepository, ModelMapper modelMapper, CategoryService categoryService) {
+    public ProductServiceImpl(ProductRepository productRepository, ModelMapper modelMapper, CategoryService categoryService, ManufacturerService manufacturerService) {
         this.productRepository = productRepository;
         this.modelMapper = modelMapper;
         this.categoryService = categoryService;
+        this.manufacturerService = manufacturerService;
     }
 
     @Override
@@ -29,6 +32,8 @@ public class ProductServiceImpl implements ProductService {
 
         Manufacturer manufacturer = new Manufacturer();
         manufacturer.setName(addProductBindingModel.getManufacturer());
+
+        manufacturerService.addManufacturer(manufacturer);
 
         product.setManufacturer(manufacturer);
 
