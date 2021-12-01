@@ -2,6 +2,7 @@ package com.example.beardculture.model.binding;
 
 import com.example.beardculture.model.entity.enums.CategoryNameEnum;
 
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
@@ -75,7 +76,7 @@ public class AddProductBindingModel {
         this.price = price;
     }
 
-    @NotNull
+    @NotEmpty
     public String getImageUrl() {
         return imageUrl;
     }

@@ -1,9 +1,6 @@
 package com.example.beardculture.model.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
@@ -58,7 +55,7 @@ public class Product extends BaseEntity{
         this.price = price;
     }
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL})
     public Manufacturer getManufacturer() {
         return manufacturer;
     }

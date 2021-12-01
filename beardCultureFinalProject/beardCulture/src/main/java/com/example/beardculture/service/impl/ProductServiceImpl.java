@@ -1,6 +1,7 @@
 package com.example.beardculture.service.impl;
 
 import com.example.beardculture.model.binding.AddProductBindingModel;
+import com.example.beardculture.model.entity.Category;
 import com.example.beardculture.model.entity.Manufacturer;
 import com.example.beardculture.model.entity.Product;
 import com.example.beardculture.model.service.AddProductServiceModel;
@@ -34,13 +35,14 @@ public class ProductServiceImpl implements ProductService {
 
         Manufacturer manufacturer = new Manufacturer();
         manufacturer.setName(addProductBindingModel.getManufacturer());
-
         manufacturerService.addManufacturer(manufacturer);
 
+        Category category = categoryService.getCategoryByName(addProductBindingModel.getCategory());
+
         product.setManufacturer(manufacturer);
+        product.setCategory(category);
 
-
-        // TODO: Finish implementing the Add product function
+        productRepository.save(product);
 
         return new AddProductServiceModel();
     }
