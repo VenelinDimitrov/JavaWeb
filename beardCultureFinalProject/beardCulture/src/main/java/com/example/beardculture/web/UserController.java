@@ -1,17 +1,16 @@
 package com.example.beardculture.web;
 
+import com.example.beardculture.model.binding.UpdateUserDetailsBindingModel;
 import com.example.beardculture.model.binding.UserRegisterBindingModel;
 import com.example.beardculture.model.entity.User;
+import com.example.beardculture.model.service.UserDetailsUpdateServiceModel;
 import com.example.beardculture.model.service.UserRegisterServiceModel;
 import com.example.beardculture.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
@@ -62,6 +61,26 @@ public class UserController {
         model.addAttribute("currentUser", user);
 
         return "my-account";
+    }
+
+    @PatchMapping("/update")
+    public String updateDetails (@Valid UpdateUserDetailsBindingModel updateUserDetailsBindingModel,
+                                 BindingResult bindingResult, RedirectAttributes redirectAttributes, Principal principal){
+
+        if (bindingResult.hasErrors()){
+            redirectAttributes.addFlashAttribute("offerModel", updateUserDetailsBindingModel);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.updateUserDetailsBindingModel", bindingResult);
+
+            return "redirect:my-account";
+        }
+
+        UserDetailsUpdateServiceModel userDetailsUpdateServiceModel = modelMapper.map(updateUserDetailsBindingModel,
+                UserDetailsUpdateServiceModel.class);
+        userDetailsUpdateServiceModel.setUsername(principal.getName());
+
+        userService.updateUserDetails(userDetailsUpdateServiceModel);
+
+        return "redirect:account";
     }
 
     @GetMapping("/admin")

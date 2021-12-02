@@ -3,6 +3,7 @@ package com.example.beardculture.service.impl;
 import com.example.beardculture.model.entity.Role;
 import com.example.beardculture.model.entity.User;
 import com.example.beardculture.model.entity.enums.RoleNameEnum;
+import com.example.beardculture.model.service.UserDetailsUpdateServiceModel;
 import com.example.beardculture.model.service.UserRegisterServiceModel;
 import com.example.beardculture.repository.UserRepository;
 import com.example.beardculture.repository.UserRoleRepository;
@@ -52,5 +53,19 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getUserByUsername(String name) {
         return userRepository.findByUsername(name).orElse(null);
+    }
+
+    @Override
+    public void updateUserDetails(UserDetailsUpdateServiceModel userDetails) {
+        User currentUser = userRepository.findByUsername(userDetails.getUsername()).orElse(null);
+
+        if (currentUser != null){
+            currentUser.setFirstName(userDetails.getFirstName());
+            currentUser.setLastName(userDetails.getLastName());
+            currentUser.setPhoneNumber(userDetails.getPhoneNumber());
+            currentUser.setAddress(userDetails.getAddress());
+
+            userRepository.save(currentUser);
+        }
     }
 }

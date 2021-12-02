@@ -28,12 +28,14 @@
 
             </div>
             <div class="col-md-6">
-                <!--                Hide and show the information base on which button is chosen-->
-                <!--                User Details-->
-                <form class="px-4 py-3 visually-hidden" id="my-user-details-form">
+                <form class="px-4 py-3 visually-hidden" th:action="@{/users/update}" th:method="PATCH" id="my-user-details-form" >
                     <div class="mb-3">
-                        <label class="form-label">Email address</label>
-                        <input type="email" class="form-control" th:field="*{email}">
+                        <label class="form-label">First Name</label>
+                        <input type="text" class="form-control" th:field="*{firstName}">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Last Name</label>
+                        <input type="text" class="form-control" th:field="*{lastName}">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Phone Number</label>
@@ -53,7 +55,7 @@
                         <ul class="list-group list-group-flush">
                             <li th:each="p : ${currentUser.getSubscription().getProductsInSubscription()}" class="list-group-item" style="width: 400px">
                                 <span th:text="${p.name}"></span>
-                                <button class="btn remove-from-box-btn">Remove from box</button>
+                                <button th:action="@{/products/delete/{id}(id=*{id})}" th:method="DELETE" class="btn remove-from-box-btn">Remove from box</button>
                             </li>
                         </ul>
                     </div>
