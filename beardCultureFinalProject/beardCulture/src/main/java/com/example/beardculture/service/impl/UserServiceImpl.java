@@ -48,4 +48,9 @@ public class UserServiceImpl implements UserService {
 
         return modelMapper.map(user, UserRegisterServiceModel.class);
     }
+
+    @Override
+    public User getUserByUsername(String name) {
+        return userRepository.findByUsername(name).orElse(null);
+    }
 }

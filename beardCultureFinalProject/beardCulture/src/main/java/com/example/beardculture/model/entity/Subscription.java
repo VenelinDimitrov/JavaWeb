@@ -22,7 +22,7 @@ public class Subscription extends BaseEntity{
         this.user = user;
     }
 
-    @ManyToMany()
+    @ManyToMany(fetch = FetchType.EAGER)
     public Set<Product> getProductsInSubscription() {
         return productsInSubscription;
     }

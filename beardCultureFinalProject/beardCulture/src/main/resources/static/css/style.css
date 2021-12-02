@@ -104,7 +104,7 @@
 }
 
 .remove-from-box-btn{
-    margin-left: 120px;
+    float: right;
 }
 
 .admin-orders-view{

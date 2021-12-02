@@ -14,6 +14,8 @@ public class User extends BaseEntity {
     private String email;
     private String password;
     private Subscription subscription;
+    private String address;
+    private String phoneNumber;
     private Set<Role> roles;
 
     public User() {
@@ -81,5 +83,21 @@ public class User extends BaseEntity {
 
     public void setSubscription(Subscription subscription) {
         this.subscription = subscription;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

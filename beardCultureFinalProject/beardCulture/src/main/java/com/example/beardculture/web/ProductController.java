@@ -58,7 +58,7 @@ public class ProductController {
 
         productService.addProduct(addProductBindingModel);
 
-        return "";
+        return "redirect:add";
     }
 
     @GetMapping("/details")
