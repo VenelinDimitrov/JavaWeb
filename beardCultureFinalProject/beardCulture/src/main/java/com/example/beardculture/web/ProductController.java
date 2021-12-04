@@ -2,6 +2,7 @@ package com.example.beardculture.web;
 
 import com.example.beardculture.model.binding.AddProductBindingModel;
 import com.example.beardculture.service.ProductService;
+import com.example.beardculture.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -16,10 +17,12 @@ public class ProductController {
 
     private final ProductService productService;
     private final ModelMapper modelMapper;
+    private final UserService userService;
 
-    public ProductController(ProductService productService, ModelMapper modelMapper) {
+    public ProductController(ProductService productService, ModelMapper modelMapper, UserService userService) {
         this.productService = productService;
         this.modelMapper = modelMapper;
+        this.userService = userService;
     }
 
     @GetMapping("/oils")
@@ -58,10 +61,11 @@ public class ProductController {
         return "redirect:add";
     }
 
-    @DeleteMapping("/delete/{id}")
-    public String removeProductFromSubscription(@PathVariable Long id){
+    @GetMapping("/removeProduct/{userId}/{productId}")
+    public String removeProductFromSubscription(@PathVariable Long userId, @PathVariable Long productId){
+        userService.removeProductFromBox(userId, productId);
 
-        // TODO implement Remove from box button
+        return "redirect:/users/account";
     }
 
     @GetMapping("/details")

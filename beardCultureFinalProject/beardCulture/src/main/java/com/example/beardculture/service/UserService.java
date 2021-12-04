@@ -9,5 +9,9 @@ public interface UserService {
 
     User getUserByUsername(String name);
 
+    User getUserById(Long id);
+
     void updateUserDetails(UserDetailsUpdateServiceModel userDetailsUpdateServiceModel);
+
+    void removeProductFromBox(Long id, Long productId);
 }

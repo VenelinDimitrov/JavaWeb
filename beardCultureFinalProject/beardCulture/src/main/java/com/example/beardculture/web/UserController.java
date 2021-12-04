@@ -83,11 +83,6 @@ public class UserController {
         return "redirect:account";
     }
 
-    @GetMapping("/admin")
-    public String adminPanel() {
-        return "admin-panel";
-    }
-
 
     @ModelAttribute
     public UserRegisterBindingModel userRegisterBindingModel() {

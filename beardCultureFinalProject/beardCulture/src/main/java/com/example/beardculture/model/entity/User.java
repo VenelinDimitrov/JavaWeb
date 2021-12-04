@@ -13,13 +13,14 @@ public class User extends BaseEntity {
     private String username;
     private String email;
     private String password;
-    private Subscription subscription;
+    private Set<Product> subscriptionBox;
     private String address;
     private String phoneNumber;
     private Set<Role> roles;
 
     public User() {
         this.roles = new HashSet<>();
+        this.subscriptionBox = new HashSet<>();
     }
 
     @Column(nullable = false)
@@ -76,15 +77,6 @@ public class User extends BaseEntity {
         this.username = username;
     }
 
-    @OneToOne
-    public Subscription getSubscription() {
-        return subscription;
-    }
-
-    public void setSubscription(Subscription subscription) {
-        this.subscription = subscription;
-    }
-
     public String getPhoneNumber() {
         return phoneNumber;
     }
@@ -99,5 +91,14 @@ public class User extends BaseEntity {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    @OneToMany(fetch = FetchType.EAGER)
+    public Set<Product> getSubscriptionBox() {
+        return subscriptionBox;
+    }
+
+    public void setSubscriptionBox(Set<Product> subscriptionBox) {
+        this.subscriptionBox = subscriptionBox;
     }
 }

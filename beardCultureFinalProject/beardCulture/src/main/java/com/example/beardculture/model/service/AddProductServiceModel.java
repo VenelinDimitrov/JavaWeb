@@ -2,7 +2,6 @@ package com.example.beardculture.model.service;
 
 import com.example.beardculture.model.entity.Category;
 import com.example.beardculture.model.entity.Manufacturer;
-import com.example.beardculture.model.entity.Subscription;
 
 import java.math.BigDecimal;
 
@@ -16,7 +15,6 @@ public class AddProductServiceModel {
     private BigDecimal price;
     private Manufacturer manufacturer;
     private String imageUrl;
-    private Subscription subscription;
 
     public AddProductServiceModel() {
     }
@@ -83,13 +81,5 @@ public class AddProductServiceModel {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
-    }
-
-    public Subscription getSubscription() {
-        return subscription;
-    }
-
-    public void setSubscription(Subscription subscription) {
-        this.subscription = subscription;
     }
 }

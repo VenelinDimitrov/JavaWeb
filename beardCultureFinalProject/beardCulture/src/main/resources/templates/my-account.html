@@ -53,9 +53,16 @@
                 <section class="subscription-items" >
                     <div class="card" style="width: 30rem;">
                         <ul class="list-group list-group-flush">
-                            <li th:each="p : ${currentUser.getSubscription().getProductsInSubscription()}" class="list-group-item" style="width: 400px">
+                            <li th:each="p : ${currentUser.getSubscriptionBox()}" class="list-group-item" style="width: 400px">
                                 <span th:text="${p.name}"></span>
-                                <button th:action="@{/products/delete/{id}(id=*{id})}" th:method="DELETE" class="btn remove-from-box-btn">Remove from box</button>
+                                <a th:href="@{/products/removeProduct/{userId}/{productId} (productId = ${p.id}, userId=*{id})}" class="btn remove-from-box-btn">Remove from box</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div th:unless="*{!getSubscriptionBox().isEmpty()}">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item" style="width: 400px">
+                                <span>Subscription Box is empty!</span>
                             </li>
                         </ul>
                     </div>
