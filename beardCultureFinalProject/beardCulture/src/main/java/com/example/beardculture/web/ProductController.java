@@ -68,9 +68,8 @@ public class ProductController {
         return "redirect:/users/account";
     }
 
-    @GetMapping("/details")
-    public String productDetails(){
-        
+    @GetMapping("/details/{id}")
+    public String productDetails(@PathVariable Long id){
 
         return "product-details";
     }

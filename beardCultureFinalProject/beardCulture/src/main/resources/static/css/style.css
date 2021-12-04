@@ -117,6 +117,13 @@
     padding: 0 0 70px 0;
 }
 
+.error-image{
+    text-align: center;
+    margin-left: 27%;
+    width: 600px;
+    height: 500px;
+}
+
 #logout-btn{
     background-color: #FFD700;
     font-family: Georgia, serif;

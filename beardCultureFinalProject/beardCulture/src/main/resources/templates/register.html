@@ -7,7 +7,7 @@
 <header th:replace="/fragments/commons::nav"></header>
 
 <main class="login-and-register-form">
-    <form class="px-4 py-3" th:action="@{/users/register}" th:errorclass="@{}" th:method="POST" th:object="${userRegisterBindingModel}">
+    <form class="px-4 py-3" th:action="@{/users/register}" th:method="POST" th:object="${userRegisterBindingModel}">
         <div class="mb-3">
             <label class="form-label">Username</label>
                 <input th:field="*{username}" th:errorclass="is-invalid" type="text" class="form-control" placeholder="Username">

@@ -53,7 +53,7 @@ public class UserRegisterBindingModel {
         this.email = email;
     }
 
-    @Size(min = 3)
+    @Size(min = 6)
     public String getPassword() {
         return password;
     }
