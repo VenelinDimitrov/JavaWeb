@@ -70,6 +70,8 @@ public class ProductController {
 
     @GetMapping("/details")
     public String productDetails(){
+        
+
         return "product-details";
     }
 
