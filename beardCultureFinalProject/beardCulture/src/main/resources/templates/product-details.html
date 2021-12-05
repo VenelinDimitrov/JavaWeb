@@ -4,7 +4,7 @@
 <body>
 <header th:replace="/fragments/commons::nav"></header>
 
-<main class="product-list">
+<main class="product-list" th:object="${productDetails}">
 
     <section class="mb-5">
 
@@ -15,7 +15,7 @@
 
                     <div class="col-12 mb-0">
                         <figure>
-                            <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/15a.jpg">
+                            <img th:src="*{imag}">
                         </figure>
                     </div>
                 </div>
@@ -33,6 +33,7 @@
 
                 <button type="button" class="btn btn-primary btn-md mr-1 mb-2">Add to Box</button>
                 <button type="button" class="btn btn-primary btn-md mr-1 mb-2">Edit</button>
+                <button type="button" class="btn btn-primary btn-md mr-1 mb-2">Delete</button>
             </div>
         </div>
 

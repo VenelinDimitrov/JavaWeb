@@ -4,6 +4,7 @@ import com.example.beardculture.model.binding.AddProductBindingModel;
 import com.example.beardculture.model.entity.Category;
 import com.example.beardculture.model.entity.Manufacturer;
 import com.example.beardculture.model.entity.Product;
+import com.example.beardculture.model.entity.enums.CategoryNameEnum;
 import com.example.beardculture.model.service.AddProductServiceModel;
 import com.example.beardculture.repository.ProductRepository;
 import com.example.beardculture.service.CategoryService;
@@ -13,6 +14,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -42,6 +44,14 @@ public class ProductServiceImpl implements ProductService {
         product.setManufacturer(manufacturer);
         product.setCategory(category);
 
+        if (addProductBindingModel.getCategory() == CategoryNameEnum.OIL){
+            product.setImageUrl("/images/oils/" + addProductBindingModel.getImageUrl() + ".jpg");
+        } else if (addProductBindingModel.getCategory() == CategoryNameEnum.BALM){
+            product.setImageUrl("/images/balms/" + addProductBindingModel.getImageUrl() + ".jpg");
+        } else {
+            product.setImageUrl("/images/gear/" + addProductBindingModel.getImageUrl() + ".jpg");
+        }
+
         productRepository.save(product);
 
         return new AddProductServiceModel();
@@ -50,5 +60,26 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Product getProductById(Long id) {
         return productRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public List<Product> getAllOils() {
+        Category oilCategory = categoryService.getCategoryByName(CategoryNameEnum.OIL);
+
+        return productRepository.findAllByCategory(oilCategory);
+    }
+
+    @Override
+    public List<Product> getAllBalms() {
+        Category balmCategory = categoryService.getCategoryByName(CategoryNameEnum.BALM);
+
+        return productRepository.findAllByCategory(balmCategory);
+    }
+
+    @Override
+    public List<Product> getAllGear() {
+        Category gearCategory = categoryService.getCategoryByName(CategoryNameEnum.GEAR);
+
+        return productRepository.findAllByCategory(gearCategory);
     }
 }

@@ -1,17 +1,20 @@
 package com.example.beardculture.web;
 
 import com.example.beardculture.model.binding.AddProductBindingModel;
+import com.example.beardculture.model.entity.Product;
 import com.example.beardculture.service.ProductService;
 import com.example.beardculture.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequestMapping("/products")
@@ -28,28 +31,40 @@ public class ProductController {
     }
 
     @GetMapping("/oils")
-    public String oilsPage(){
+    public String oilsPage(Model model) {
+        List<Product> oils = productService.getAllOils();
+
+        model.addAttribute("oils", oils);
+
         return "oils";
     }
 
     @GetMapping("/balms")
-    public String balmsPage(){
+    public String balmsPage(Model model) {
+        List<Product> balms = productService.getAllBalms();
+
+        model.addAttribute("balms", balms);
+
         return "balms";
     }
 
     @GetMapping("/gear")
-    public String gearPage(){
+    public String gearPage(Model model) {
+        List<Product> gear = productService.getAllGear();
+
+        model.addAttribute("gear", gear);
+
         return "gear";
     }
 
     @GetMapping("/add")
-    public String addProduct(){
+    public String addProduct() {
         return "add-product";
     }
 
     @PostMapping("/add")
     public String addProductConfirm(@Valid AddProductBindingModel addProductBindingModel,
-                                    BindingResult bindingResult, RedirectAttributes redirectAttributes){
+                                    BindingResult bindingResult, RedirectAttributes redirectAttributes) {
 
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("addProductBindingModel", addProductBindingModel);
@@ -64,20 +79,23 @@ public class ProductController {
     }
 
     @GetMapping("/removeProduct/{userId}/{productId}")
-    public String removeProductFromSubscription(@PathVariable Long userId, @PathVariable Long productId){
+    public String removeProductFromSubscription(@PathVariable Long userId, @PathVariable Long productId) {
         userService.removeProductFromBox(userId, productId);
 
         return "redirect:/users/account";
     }
 
     @GetMapping("/details/{id}")
-    public String productDetails(@PathVariable Long id){
+    public String productDetails(@PathVariable Long id, Model model) {
 
         Product product = productService.getProductById(id);
 
-        if(product == null){
+        model.addAttribute("productDetails", product);
+
+        if (product == null) {
             throw new ProductNotFoundException();
         }
+
         return "product-details";
     }
 
@@ -91,7 +109,7 @@ public class ProductController {
 
 
     @ModelAttribute
-    public AddProductBindingModel addProductBindingModel(){
+    public AddProductBindingModel addProductBindingModel() {
         return new AddProductBindingModel();
     }
 }

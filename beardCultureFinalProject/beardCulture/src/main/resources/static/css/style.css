@@ -124,6 +124,12 @@
     height: 500px;
 }
 
+.card-text{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
 #logout-btn{
     background-color: #FFD700;
     font-family: Georgia, serif;
