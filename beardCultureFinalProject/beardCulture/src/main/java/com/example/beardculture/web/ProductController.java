@@ -4,9 +4,11 @@ import com.example.beardculture.model.binding.AddProductBindingModel;
 import com.example.beardculture.service.ProductService;
 import com.example.beardculture.service.UserService;
 import org.modelmapper.ModelMapper;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
@@ -71,7 +73,20 @@ public class ProductController {
     @GetMapping("/details/{id}")
     public String productDetails(@PathVariable Long id){
 
+        Product product = productService.getProductById(id);
+
+        if(product == null){
+            throw new ProductNotFoundException();
+        }
         return "product-details";
+    }
+
+    @ExceptionHandler(ProductNotFoundException.class)
+    public ModelAndView productExceptionHandler(ProductNotFoundException e) {
+        ModelAndView modelAndView = new ModelAndView("product-not-found");
+        modelAndView.setStatus(HttpStatus.NOT_FOUND);
+
+        return modelAndView;
     }
 
 

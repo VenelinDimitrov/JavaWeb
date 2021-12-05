@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/fragments/commons::head"></head>
+<body>
+
+<main>
+    <header th:replace="/fragments/commons::nav"></header>
+
+    <div>
+        <h2 class="header">Oops, you don't have the needed access for this page. <a href="/users/login">Return home.</a></h2>
+        <img class="error-image" src="/images/error403.png" alt="">
+    </div>
+</main>
+
+<footer th:replace="/fragments/commons::footer"></footer>
+</body>
+</html>
