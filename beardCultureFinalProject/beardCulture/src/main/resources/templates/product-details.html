@@ -15,7 +15,7 @@
 
                     <div class="col-12 mb-0">
                         <figure>
-                            <img th:src="*{imag}">
+                            <img th:src="*{imageUrl}">
                         </figure>
                     </div>
                 </div>
@@ -24,12 +24,10 @@
             </div>
             <div class="col-md-6 product-details">
 
-                <h5>Fantasy T-shirt</h5>
+                <h5 th:text="*{name}"></h5>
 
-                <p><span class="mr-1"><strong>$12.99</strong></span></p>
-                <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, sapiente illo. Sit
-                    error voluptas repellat rerum quidem, soluta enim perferendis voluptates laboriosam. Distinctio,
-                    officia quis dolore quos sapiente tempore alias.</p>
+                <p><span class="mr-1" th:text="'&euro;' + *{price}"><strong></strong></span></p>
+                <p class="description"th:text="*{description}"></p>
 
                 <button type="button" class="btn btn-primary btn-md mr-1 mb-2">Add to Box</button>
                 <button type="button" class="btn btn-primary btn-md mr-1 mb-2">Edit</button>
