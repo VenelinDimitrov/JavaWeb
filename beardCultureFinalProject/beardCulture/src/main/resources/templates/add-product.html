@@ -28,8 +28,6 @@
             <select th:field="*{category}" class="form-control" id="exampleFormControlSelect1">
                 <option th:each="c : ${T(com.example.beardculture.model.entity.enums.CategoryNameEnum).values()}
 "                       th:value="${c}" th:text="${c}">Oil</option>
-<!--                <option>Balm</option>-->
-<!--                <option>Gear</option>-->
             </select>
         </div>
         <div class="mb-3">

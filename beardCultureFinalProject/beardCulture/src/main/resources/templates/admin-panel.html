@@ -35,20 +35,18 @@
 
 
         <div class="admin-rights-modifier visually-hidden">
-            <form>
+            <form th:action="@{/admin/addRights}" th:method="GET" th:object="${addRoleBindingModel}">
                 <div class="form-group">
                     <label for="userEmail">Email address of User</label>
-                    <input type="email" class="form-control" id="userEmail" aria-describedby="emailHelp"
+                    <input type="email" th:field="*{email}" class="form-control" id="userEmail" aria-describedby="emailHelp"
                            placeholder="Enter email">
-                    <small id="emailHelp" class="form-text text-muted">The below specified rights will be granted to
-                        this user.</small>
                 </div>
                 <br>
                 <div class="form-group">
                     <label for="exampleFormControlSelect1">Grant Rights as:</label>
-                    <select class="form-control" id="exampleFormControlSelect1">
-                        <option>Moderator</option>
-                        <option>Administrator</option>
+                    <select th:field="*{role}" class="form-control" id="exampleFormControlSelect1">
+                        <option value="MODERATOR">MODERATOR</option>
+                        <option value="ADMIN">ADMIN</option>
                     </select>
                 </div>
                 <br>

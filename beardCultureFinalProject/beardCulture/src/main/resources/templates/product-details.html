@@ -22,16 +22,42 @@
 
 
             </div>
-            <div class="col-md-6 product-details">
+            <div id="product-details-section" class="col-md-6">
 
                 <h5 th:text="*{name}"></h5>
 
                 <p><span class="mr-1" th:text="'&euro;' + *{price}"><strong></strong></span></p>
-                <p class="description"th:text="*{description}"></p>
+                <p>
+                    <span th:if="*{quantity > 0}" class="mr-1" >Available: Yes</span>
+                    <span th:unless="*{quantity > 0}" class="mr-1" >Available: No</span>
+                </p>
+                <p class="description" th:text="*{description}"></p>
 
                 <button type="button" class="btn btn-primary btn-md mr-1 mb-2">Add to Box</button>
-                <button type="button" class="btn btn-primary btn-md mr-1 mb-2">Edit</button>
+                <button id="edit-product-btn" type="button" class="btn btn-primary btn-md mr-1 mb-2">Edit</button>
                 <button type="button" class="btn btn-primary btn-md mr-1 mb-2">Delete</button>
+            </div>
+
+            <!--            Hide this field and display it when the Edit button is pressed-->
+            <div id="product-edit-section" class="col-md-6 product-edit visually-hidden">
+
+                <h5 th:text="'Editing product: '+ *{name}"></h5>
+
+                <form id="product-edit-form" class="px-4 py-3" th:action="@{/products/edit/{id} (id = *{id})}" th:method="PATCH">
+                    <div class="mb-3">
+                        <label for="productQuantity" class="form-label">Quantity</label>
+                        <input th:field="*{quantity}" type="text" class="form-control" id="productQuantity">
+                    </div>
+                    <div class="mb-3">
+                        <label for="productPrice" class="form-label">Product Price</label>
+                        <input th:field="*{price}" type="text" class="form-control" id="productPrice">
+                    </div>
+                    <div class="mb-3">
+                        <label for="imageUrl" class="form-label">Image Url</label>
+                        <input th:field="*{imageUrl}" type="text" class="form-control" id="imageUrl">
+                    </div>
+                    <button type="submit" id="update-product-btn" class="btn btn-primary">Update Product</button>
+                </form>
             </div>
         </div>
 
@@ -45,10 +71,6 @@
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous">
 </script>
-</body>
-</html></title>
-</head>
-<body>
-
+<script src="/js/productEditToggle.js"></script>
 </body>
 </html>

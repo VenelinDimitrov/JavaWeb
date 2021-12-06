@@ -1,7 +1,9 @@
 package com.example.beardculture.web;
 
 import com.example.beardculture.model.binding.AddProductBindingModel;
+import com.example.beardculture.model.binding.ProductUpdateBindingModel;
 import com.example.beardculture.model.entity.Product;
+import com.example.beardculture.model.service.ProductUpdateServiceModel;
 import com.example.beardculture.service.ProductService;
 import com.example.beardculture.service.UserService;
 import org.modelmapper.ModelMapper;
@@ -97,6 +99,25 @@ public class ProductController {
         }
 
         return "product-details";
+    }
+
+    @PatchMapping("/edit/{id}")
+    public String editProductDetails(@Valid ProductUpdateBindingModel productUpdateBindingModel,
+                                     BindingResult bindingResult, RedirectAttributes redirectAttributes, @PathVariable Long id) {
+
+        if (bindingResult.hasErrors()){
+            redirectAttributes.addFlashAttribute("productUpdateBindingModel", productUpdateBindingModel);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.productUpdateBindingModel", bindingResult);
+
+            return "redirect:/products/edit/" + id;
+        }
+
+        ProductUpdateServiceModel productUpdateServiceModel = modelMapper.map(productUpdateBindingModel, ProductUpdateServiceModel.class);
+        productUpdateServiceModel.setId(id);
+
+        productService.updateProduct(productUpdateServiceModel);
+
+        return "redirect:/products/details/" + id;
     }
 
     @ExceptionHandler(ProductNotFoundException.class)

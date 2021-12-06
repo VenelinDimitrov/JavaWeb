@@ -6,6 +6,7 @@ import com.example.beardculture.model.entity.Manufacturer;
 import com.example.beardculture.model.entity.Product;
 import com.example.beardculture.model.entity.enums.CategoryNameEnum;
 import com.example.beardculture.model.service.AddProductServiceModel;
+import com.example.beardculture.model.service.ProductUpdateServiceModel;
 import com.example.beardculture.repository.ProductRepository;
 import com.example.beardculture.service.CategoryService;
 import com.example.beardculture.service.ManufacturerService;
@@ -44,9 +45,9 @@ public class ProductServiceImpl implements ProductService {
         product.setManufacturer(manufacturer);
         product.setCategory(category);
 
-        if (addProductBindingModel.getCategory() == CategoryNameEnum.OIL){
+        if (addProductBindingModel.getCategory() == CategoryNameEnum.OIL) {
             product.setImageUrl("/images/oils/" + addProductBindingModel.getImageUrl() + ".jpg");
-        } else if (addProductBindingModel.getCategory() == CategoryNameEnum.BALM){
+        } else if (addProductBindingModel.getCategory() == CategoryNameEnum.BALM) {
             product.setImageUrl("/images/balms/" + addProductBindingModel.getImageUrl() + ".jpg");
         } else {
             product.setImageUrl("/images/gear/" + addProductBindingModel.getImageUrl() + ".jpg");
@@ -81,5 +82,18 @@ public class ProductServiceImpl implements ProductService {
         Category gearCategory = categoryService.getCategoryByName(CategoryNameEnum.GEAR);
 
         return productRepository.findAllByCategory(gearCategory);
+    }
+
+    @Override
+    public void updateProduct(ProductUpdateServiceModel productUpdateServiceModel) {
+        Product product = productRepository.findById(productUpdateServiceModel.getId()).orElse(null);
+
+        if (product != null){
+            product.setQuantity(productUpdateServiceModel.getQuantity());
+            product.setPrice(productUpdateServiceModel.getPrice());
+            product.setImageUrl(productUpdateServiceModel.getImageUrl());
+
+            productRepository.save(product);
+        }
     }
 }

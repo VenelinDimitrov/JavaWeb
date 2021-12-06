@@ -14,4 +14,8 @@ public interface UserService {
     void updateUserDetails(UserDetailsUpdateServiceModel userDetailsUpdateServiceModel);
 
     void removeProductFromBox(Long id, Long productId);
+
+    User getUserByEmail(String email);
+
+    void saveUser(User user);
 }
