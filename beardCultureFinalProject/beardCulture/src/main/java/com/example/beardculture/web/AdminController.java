@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.Set;
+import java.util.stream.Collectors;
+
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
@@ -36,9 +39,17 @@ public class AdminController {
         User user = userService.getUserByEmail(addRoleBindingModel.getEmail());
 
         if (user != null){
-            Role role = roleService.getRoleByRoleName(addRoleBindingModel.getRole());
 
-            user.getRoles().add(role);
+            if (addRoleBindingModel.getAction().equals("Add Role")) {
+                Role role = roleService.getRoleByRoleName(addRoleBindingModel.getRole());
+
+                user.getRoles().add(role);
+            } else {
+                Set<Role> newRoles = user.getRoles().stream().filter(r -> r.getRole() != addRoleBindingModel.getRole())
+                        .collect(Collectors.toSet());
+
+                user.setRoles(newRoles);
+            }
 
             userService.saveUser(user);
         }

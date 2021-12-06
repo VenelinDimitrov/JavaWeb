@@ -94,9 +94,9 @@ public class UserServiceImpl implements UserService {
     public void removeProductFromBox(Long userId, Long productId) {
         User user = userRepository.findById(userId).orElse(null);
 
-        Set<Product> productStream = user.getSubscriptionBox().stream().filter(p -> p.getId() != productId).collect(Collectors.toSet());
+        Set<Product> newProductList = user.getSubscriptionBox().stream().filter(p -> p.getId() != productId).collect(Collectors.toSet());
 
-        user.setSubscriptionBox(productStream);
+        user.setSubscriptionBox(newProductList);
 
         userRepository.save(user);
     }

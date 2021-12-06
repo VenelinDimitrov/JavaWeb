@@ -6,6 +6,7 @@ public class AddRoleBindingModel {
 
     private String email;
     private RoleNameEnum role;
+    private String action;
 
     public AddRoleBindingModel() {
     }
@@ -24,5 +25,13 @@ public class AddRoleBindingModel {
 
     public void setRole(RoleNameEnum role) {
         this.role = role;
+    }
+
+    public String getAction() {
+        return action;
+    }
+
+    public void setAction(String action) {
+        this.action = action;
     }
 }

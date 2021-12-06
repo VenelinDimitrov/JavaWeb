@@ -43,14 +43,22 @@
                 </div>
                 <br>
                 <div class="form-group">
-                    <label for="exampleFormControlSelect1">Grant Rights as:</label>
+                    <label for="exampleFormControlSelect1">Rights as:</label>
                     <select th:field="*{role}" class="form-control" id="exampleFormControlSelect1">
                         <option value="MODERATOR">MODERATOR</option>
                         <option value="ADMIN">ADMIN</option>
                     </select>
                 </div>
                 <br>
-                <button type="submit" class="btn btn-primary">Grant Rights</button>
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Select action:</label>
+                    <select th:field="*{action}" class="form-control" id="action">
+                        <option value="Add Role">Add Role</option>
+                        <option value="Remove Role">Remove Role</option>
+                    </select>
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary">Update Rights</button>
             </form>
         </div>
     </section>
