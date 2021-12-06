@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="/fragments/commons::head"></head>
 <body>
 <header th:replace="/fragments/commons::nav"></header>
@@ -28,22 +29,28 @@
 
                 <p><span class="mr-1" th:text="'&euro;' + *{price}"><strong></strong></span></p>
                 <p>
-                    <span th:if="*{quantity > 0}" class="mr-1" >Available: Yes</span>
-                    <span th:unless="*{quantity > 0}" class="mr-1" >Available: No</span>
+                    <span th:if="*{quantity > 0}" class="mr-1">Available: Yes</span>
+                    <span th:unless="*{quantity > 0}" class="mr-1">Available: No</span>
                 </p>
                 <p class="description" th:text="*{description}"></p>
 
                 <button type="button" class="btn btn-primary btn-md mr-1 mb-2">Add to Box</button>
-                <button id="edit-product-btn" type="button" class="btn btn-primary btn-md mr-1 mb-2">Edit</button>
-                <button type="button" class="btn btn-primary btn-md mr-1 mb-2">Delete</button>
+                <th:block sec:authorize="hasRole('ADMIN') or hasRole('MODERATOR')">
+                    <button id="edit-product-btn" type="button"
+                            class="btn btn-primary btn-md mr-1 mb-2">Edit
+                    </button>
+                    <button type="button" class="btn btn-primary btn-md mr-1 mb-2">Delete</button>
+                </th:block>
+
             </div>
 
             <!--            Hide this field and display it when the Edit button is pressed-->
-            <div id="product-edit-section" class="col-md-6 product-edit visually-hidden">
+            <div id="product-edit-section" class="col-md-6 product-edit visually-hidden" sec:authorize="hasRole('ADMIN') or hasRole('MODERATOR')">
 
                 <h5 th:text="'Editing product: '+ *{name}"></h5>
 
-                <form id="product-edit-form" class="px-4 py-3" th:action="@{/products/edit/{id} (id = *{id})}" th:method="PATCH">
+                <form id="product-edit-form" class="px-4 py-3" th:action="@{/products/edit/{id} (id = *{id})}"
+                      th:method="PATCH">
                     <div class="mb-3">
                         <label for="productQuantity" class="form-label">Quantity</label>
                         <input th:field="*{quantity}" type="text" class="form-control" id="productQuantity">

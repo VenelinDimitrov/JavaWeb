@@ -90,7 +90,6 @@
 .active-btn{
     background-color: #404040;
     color: #FFD700;
-
 }
 
 .my-account-page{
@@ -136,8 +135,11 @@
 }
 
 #logout-btn{
+    border: none;
     background-color: #FFD700;
+    color: #525252;
     font-family: Georgia, serif;
+    font-weight: bold;
 }
 
 #address-img{
