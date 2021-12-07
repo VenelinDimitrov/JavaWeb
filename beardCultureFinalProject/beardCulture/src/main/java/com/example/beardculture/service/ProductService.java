@@ -19,4 +19,8 @@ public interface ProductService {
     List<Product> getAllGear();
 
     void updateProduct(ProductUpdateServiceModel productUpdateServiceModel);
+
+    List<Product> getAllProducts();
+
+    void saveProduct(Product product);
 }

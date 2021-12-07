@@ -26,13 +26,10 @@ public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapt
     protected void configure(HttpSecurity http) throws Exception {
 
         http.authorizeRequests()
-                // With this ine we allow access to all static resources
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                // The next line allows access to the home page, login page and registration page for everyone
                 .antMatchers("/", "/users/login", "/users/register", "/products/oils",
                         "/products/balms", "/products/gear", "/products/details/**", "/contacts", "/about", "/terms", "/privacy").permitAll()
                 .antMatchers("/users/admin").hasRole(RoleNameEnum.ADMIN.name())
-                // Next we forbid all other pages for unauthenticated users
                 .antMatchers("/**").authenticated()
                 .and()
                 .formLogin().loginPage("/users/login")
