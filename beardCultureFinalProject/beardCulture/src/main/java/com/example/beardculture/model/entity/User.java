@@ -93,7 +93,7 @@ public class User extends BaseEntity {
         this.address = address;
     }
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     public Set<Product> getSubscriptionBox() {
         return subscriptionBox;
     }

@@ -1,7 +1,6 @@
 package com.example.beardculture.model.binding;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 public class UpdateUserDetailsBindingModel {
@@ -15,7 +14,7 @@ public class UpdateUserDetailsBindingModel {
     public UpdateUserDetailsBindingModel() {
     }
 
-    @NotNull
+    @NotBlank
     @Size(min = 2, max = 20)
     public String getFirstName() {
         return firstName;

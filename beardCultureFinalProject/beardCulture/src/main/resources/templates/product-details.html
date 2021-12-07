@@ -34,7 +34,14 @@
                 </p>
                 <p class="description" th:text="*{description}"></p>
 
-                <button type="button" class="btn btn-primary btn-md mr-1 mb-2">Add to Box</button>
+
+                <th:block sec:authorize="!isAuthenticated()">
+                    <p>You need to be <a th:href="@{/users/register}">Registered</a> or
+                        <a th:href="@{/users/login}">Logged in</a> to add this product to your subscription.</p>
+                </th:block>
+                <th:block sec:authorize="isAuthenticated()">
+                    <a th:href="@{/products/addToBox/{id} (id=*{id})}" class="btn btn-primary">Add to box</a>
+                </th:block>
                 <th:block sec:authorize="hasRole('ADMIN') or hasRole('MODERATOR')">
                     <button id="edit-product-btn" type="button"
                             class="btn btn-primary btn-md mr-1 mb-2">Edit

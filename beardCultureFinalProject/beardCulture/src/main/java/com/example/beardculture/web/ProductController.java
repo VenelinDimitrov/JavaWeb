@@ -3,6 +3,7 @@ package com.example.beardculture.web;
 import com.example.beardculture.model.binding.AddProductBindingModel;
 import com.example.beardculture.model.binding.ProductUpdateBindingModel;
 import com.example.beardculture.model.entity.Product;
+import com.example.beardculture.model.entity.User;
 import com.example.beardculture.model.service.ProductUpdateServiceModel;
 import com.example.beardculture.service.ProductService;
 import com.example.beardculture.service.UserService;
@@ -16,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -85,6 +87,26 @@ public class ProductController {
         userService.removeProductFromBox(userId, productId);
 
         return "redirect:/users/account";
+    }
+
+    @GetMapping("/addToBox/{id}")
+    public String addProductToBox(@PathVariable Long id, Principal principal){
+        Product productToAdd = productService.getProductById(id);
+        User currentUser = userService.getUserByUsername(principal.getName());
+
+        if (currentUser.getSubscriptionBox().contains(productToAdd)){
+            //TODO triger pop-up message that the product already exists in subscription box
+            return "redirect:/details/" + id;
+        }
+
+        productToAdd.setQuantity(productToAdd.getQuantity() - 1);
+
+
+        currentUser.getSubscriptionBox().add(productToAdd);
+
+        userService.saveUser(currentUser);
+
+        return "redirect:/products/details/" + id;
     }
 
     @GetMapping("/details/{id}")

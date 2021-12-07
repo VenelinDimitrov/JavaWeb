@@ -14,7 +14,6 @@ public class ProductUpdateBindingModel {
     }
 
     @Positive
-    @NotBlank
     public Integer getQuantity() {
         return quantity;
     }
@@ -24,7 +23,6 @@ public class ProductUpdateBindingModel {
     }
 
     @Positive
-    @NotBlank
     public BigDecimal getPrice() {
         return price;
     }
