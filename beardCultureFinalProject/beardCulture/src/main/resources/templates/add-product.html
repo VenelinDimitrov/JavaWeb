@@ -13,15 +13,24 @@
     <form class="px-4 py-3" th:action="@{/products/add}" th:method="POST" th:object="${addProductBindingModel}">
         <div class="mb-3">
             <label for="productName" class="form-label">Product Name</label>
-            <input th:field="*{productName}" type="text" class="form-control" id="productName">
+            <input th:field="*{productName}" th:errorclass="is-invalid" type="text" class="form-control" id="productName">
+            <small class="invalid-feedback bg-danger text-light rounded">
+                Product name has to be at least 3 symbols long.
+            </small>
         </div>
         <div class="mb-3">
             <label for="productDescription" class="form-label">Description</label>
-            <input th:field="*{description}" type="text" class="form-control" id="productDescription">
+            <input th:field="*{description}" th:errorclass="is-invalid" type="text" class="form-control" id="productDescription">
+            <small class="invalid-feedback bg-danger text-light rounded">
+                Product description has to be at least 5 symbols long.
+            </small>
         </div>
         <div class="mb-3">
             <label for="productPrice" class="form-label">Manufacturer</label>
-            <input th:field="*{manufacturer}" type="text" class="form-control" id="productManufacturer">
+            <input th:field="*{manufacturer}" th:errorclass="is-invalid" type="text" class="form-control" id="productManufacturer">
+            <small class="invalid-feedback bg-danger text-light rounded">
+                Manufacturer cannot be blank.
+            </small>
         </div>
         <div class="form-group">
             <label for="exampleFormControlSelect1">Category</label>
@@ -32,15 +41,24 @@
         </div>
         <div class="mb-3">
             <label for="productQuantity" class="form-label">Quantity</label>
-            <input th:field="*{quantity}" type="text" class="form-control" id="productQuantity">
+            <input th:field="*{quantity}" th:errorclass="is-invalid" type="text" class="form-control" id="productQuantity">
+            <small class="invalid-feedback bg-danger text-light rounded">
+                Quantity has to be a positive number.
+            </small>
         </div>
         <div class="mb-3">
             <label for="productPrice" class="form-label">Product Price</label>
-            <input th:field="*{price}" type="text" class="form-control" id="productPrice">
+            <input th:field="*{price}" th:errorclass="is-invalid" type="text" class="form-control" id="productPrice">
+            <small class="invalid-feedback bg-danger text-light rounded">
+                Price has to be greater than 0 and not blank.
+            </small>
         </div>
         <div class="mb-3">
             <label for="imageUrl" class="form-label">Image Url</label>
-            <input th:field="*{imageUrl}" type="text" class="form-control" id="imageUrl">
+            <input th:field="*{imageUrl}" th:errorclass="is-invalid" type="text" class="form-control" id="imageUrl">
+            <small class="invalid-feedback bg-danger text-light rounded">
+                Image URL cannot be blank.
+            </small>
         </div>
         <button type="submit" class="btn btn-primary">Add Product</button>
     </form>

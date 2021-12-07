@@ -12,7 +12,7 @@
             <label class="form-label">Username</label>
                 <input th:field="*{username}" th:errorclass="is-invalid" type="text" class="form-control" placeholder="Username">
             <small class="invalid-feedback bg-danger text-light rounded">
-                Username length must be between 5 and 20 characters.
+                Username length must be between 3 and 20 characters.
             </small>
         </div>
         <div class="mb-3">
@@ -37,7 +37,7 @@
             <label class="form-label">Password</label>
             <input th:field="*{password}" th:errorclass="is-invalid" type="password" class="form-control" placeholder="Password">
             <small class="invalid-feedback bg-danger text-light rounded">
-                Password has to be between 6 and 20 symbols.
+                Password has to be at least 4 symbols long.
             </small>
         </div>
         <div class="mb-3">

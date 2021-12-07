@@ -2,10 +2,7 @@ package com.example.beardculture.model.binding;
 
 import com.example.beardculture.model.entity.enums.CategoryNameEnum;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Positive;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.math.BigDecimal;
 
 public class AddProductBindingModel {
@@ -39,7 +36,7 @@ public class AddProductBindingModel {
         this.description = description;
     }
 
-    @NotNull
+    @NotBlank
     public String getManufacturer() {
         return manufacturer;
     }
@@ -58,6 +55,7 @@ public class AddProductBindingModel {
     }
 
     @Positive
+    @NotBlank
     public Integer getQuantity() {
         return quantity;
     }
@@ -67,7 +65,7 @@ public class AddProductBindingModel {
     }
 
     @Positive
-    @NotNull
+    @NotBlank
     public BigDecimal getPrice() {
         return price;
     }
@@ -76,7 +74,7 @@ public class AddProductBindingModel {
         this.price = price;
     }
 
-    @NotEmpty
+    @NotBlank
     public String getImageUrl() {
         return imageUrl;
     }

@@ -1,6 +1,6 @@
 package com.example.beardculture.model.binding;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Positive;
 import java.math.BigDecimal;
 
@@ -13,7 +13,8 @@ public class ProductUpdateBindingModel {
     public ProductUpdateBindingModel() {
     }
 
-    @NotNull
+    @Positive
+    @NotBlank
     public Integer getQuantity() {
         return quantity;
     }
@@ -22,8 +23,8 @@ public class ProductUpdateBindingModel {
         this.quantity = quantity;
     }
 
-    @NotNull
     @Positive
+    @NotBlank
     public BigDecimal getPrice() {
         return price;
     }
@@ -32,7 +33,7 @@ public class ProductUpdateBindingModel {
         this.price = price;
     }
 
-    @NotNull
+    @NotBlank
     public String getImageUrl() {
         return imageUrl;
     }

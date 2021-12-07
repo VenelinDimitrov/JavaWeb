@@ -1,5 +1,8 @@
 package com.example.beardculture.model.binding;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
 public class UserLoginBindingModel {
 
     private String username;
@@ -8,6 +11,8 @@ public class UserLoginBindingModel {
     public UserLoginBindingModel() {
     }
 
+    @NotBlank
+    @Size(min = 3)
     public String getUsername() {
         return username;
     }
@@ -16,6 +21,8 @@ public class UserLoginBindingModel {
         this.username = username;
     }
 
+    @NotBlank
+    @Size(min = 4)
     public String getPassword() {
         return password;
     }

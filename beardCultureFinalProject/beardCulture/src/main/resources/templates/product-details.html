@@ -53,15 +53,24 @@
                       th:method="PATCH">
                     <div class="mb-3">
                         <label for="productQuantity" class="form-label">Quantity</label>
-                        <input th:field="*{quantity}" type="text" class="form-control" id="productQuantity">
+                        <input th:field="*{quantity}" th:errorclass="is-invalid" type="text" class="form-control" id="productQuantity">
+                        <small class="invalid-feedback bg-danger text-light rounded">
+                            Quantity has to be a positive number.
+                        </small>
                     </div>
                     <div class="mb-3">
                         <label for="productPrice" class="form-label">Product Price</label>
-                        <input th:field="*{price}" type="text" class="form-control" id="productPrice">
+                        <input th:field="*{price}" th:errorclass="is-invalid" type="text" class="form-control" id="productPrice">
+                        <small class="invalid-feedback bg-danger text-light rounded">
+                            Price has to be greater than 0 and not blank.
+                        </small>
                     </div>
                     <div class="mb-3">
                         <label for="imageUrl" class="form-label">Image Url</label>
-                        <input th:field="*{imageUrl}" type="text" class="form-control" id="imageUrl">
+                        <input th:field="*{imageUrl}" th:errorclass="is-invalid" type="text" class="form-control" id="imageUrl">
+                        <small class="invalid-feedback bg-danger text-light rounded">
+                            Image URL cannot be blank.
+                        </small>
                     </div>
                     <button type="submit" id="update-product-btn" class="btn btn-primary">Update Product</button>
                 </form>
