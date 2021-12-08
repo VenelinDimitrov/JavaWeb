@@ -4,6 +4,8 @@ import com.example.beardculture.model.entity.User;
 import com.example.beardculture.model.service.UserDetailsUpdateServiceModel;
 import com.example.beardculture.model.service.UserRegisterServiceModel;
 
+import java.util.List;
+
 public interface UserService {
     UserRegisterServiceModel registerUser(UserRegisterServiceModel userRegisterServiceModel);
 
@@ -18,4 +20,6 @@ public interface UserService {
     User getUserByEmail(String email);
 
     void saveUser(User user);
+
+    List<User> getAllUsers();
 }

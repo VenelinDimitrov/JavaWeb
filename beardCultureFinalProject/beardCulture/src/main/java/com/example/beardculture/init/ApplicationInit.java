@@ -50,7 +50,7 @@ public class ApplicationInit implements CommandLineRunner {
         }
     }
 
-    @Scheduled(cron = "*/5 * * * *") // schedule for every day - "59 23 * * *"
+    @Scheduled(cron = "59 23 * * * *") // cron for every day and every 5 minutes - "59 23 * * *" "*/5 * * * *"
     public void restock(){
         productService.getAllProducts().forEach(p -> {
             Product product = productService.getProductById(p.getId());

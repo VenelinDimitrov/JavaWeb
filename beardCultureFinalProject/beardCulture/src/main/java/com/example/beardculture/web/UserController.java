@@ -7,6 +7,7 @@ import com.example.beardculture.model.service.UserDetailsUpdateServiceModel;
 import com.example.beardculture.model.service.UserRegisterServiceModel;
 import com.example.beardculture.service.UserService;
 import org.modelmapper.ModelMapper;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.security.Principal;
+import java.util.*;
 
 @Controller
 @RequestMapping("/users")
@@ -83,6 +85,20 @@ public class UserController {
         return "redirect:account";
     }
 
+    @GetMapping("/dataForAdmin")
+    public ResponseEntity<Map<String,Integer>> getAdminData (){
+        Map<String, Integer> adminData = new HashMap<>();
+
+        List<User> allUsers = userService.getAllUsers();
+        adminData.put("usersCount", allUsers.size());
+
+        int allItemsInSubscriptions = allUsers.stream().mapToInt(user -> user.getSubscriptionBox().size()).sum();
+
+        adminData.put("itemsInSubscriptions", allItemsInSubscriptions);
+        adminData.put("itemsPerUser", allItemsInSubscriptions / allUsers.size());
+
+        return ResponseEntity.ok(adminData);
+    }
 
     @ModelAttribute
     public UserRegisterBindingModel userRegisterBindingModel() {
