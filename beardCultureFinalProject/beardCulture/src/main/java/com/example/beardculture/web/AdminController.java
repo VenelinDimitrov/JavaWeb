@@ -4,8 +4,10 @@ import com.example.beardculture.model.binding.AddRoleBindingModel;
 import com.example.beardculture.model.entity.Role;
 import com.example.beardculture.model.entity.User;
 import com.example.beardculture.service.RoleService;
+import com.example.beardculture.service.StatsService;
 import com.example.beardculture.service.UserService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -21,16 +23,19 @@ public class AdminController {
 
     private final UserService userService;
     private final RoleService roleService;
+    private final StatsService statsService;
 
-    public AdminController(UserService userService, RoleService roleService) {
+    public AdminController(UserService userService, RoleService roleService, StatsService statsService) {
         this.userService = userService;
 
         this.roleService = roleService;
+        this.statsService = statsService;
     }
 
 
     @GetMapping("/panel")
-    public String adminPanel() {
+    public String adminPanel(Model model) {
+        model.addAttribute("stats", statsService.getStats());
         return "admin-panel";
     }
 

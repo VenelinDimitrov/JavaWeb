@@ -18,7 +18,7 @@
             </button>
         </div>
 
-        <div class="admin-orders-view">
+        <div class="admin-orders-view" th:object="${stats}">
             <section class="subscription-items">
                 <div class="card" style="width: 30rem;">
                     <ul class="list-group list-group-flush">
@@ -31,6 +31,8 @@
                         <li id="average-items-per-user" class="list-group-item" style="width: 400px">
                             Average items per user:
                         </li>
+                        <li class="list-group-item" style="width: 400px" th:text="'Authenticated requests: ' + *{getAuthorizedRequests()}"></li>
+                        <li class="list-group-item" style="width: 400px" th:text="'Anonymous requests: ' + *{getAnonymousRequests()}"></li>
                     </ul>
                 </div>
             </section>
