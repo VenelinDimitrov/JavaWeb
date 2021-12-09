@@ -8,6 +8,7 @@ import com.example.beardculture.model.service.UserRegisterServiceModel;
 import com.example.beardculture.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -98,6 +99,16 @@ public class UserController {
         adminData.put("itemsPerUser", allItemsInSubscriptions / allUsers.size());
 
         return ResponseEntity.ok(adminData);
+    }
+
+    @PostMapping("/login-error")
+    public String failedToLogin(@ModelAttribute(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY)
+                                String username, RedirectAttributes redirectAttributes){
+
+        redirectAttributes.addFlashAttribute("bad_credentials", true);
+        redirectAttributes.addFlashAttribute("username", username);
+
+        return "redirect:login";
     }
 
     @ModelAttribute
