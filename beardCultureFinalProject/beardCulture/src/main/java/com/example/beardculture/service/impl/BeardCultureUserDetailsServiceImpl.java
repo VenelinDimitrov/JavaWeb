@@ -13,11 +13,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class BeardCultureUserServiceImpl implements UserDetailsService {
+public class BeardCultureUserDetailsServiceImpl implements UserDetailsService {
 
     private UserRepository userRepository;
 
-    public BeardCultureUserServiceImpl(UserRepository userRepository) {
+    public BeardCultureUserDetailsServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
