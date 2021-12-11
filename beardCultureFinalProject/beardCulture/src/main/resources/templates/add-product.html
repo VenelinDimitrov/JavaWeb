@@ -10,6 +10,10 @@
 
 <main class="add-product-form">
 
+<!--    <h6 th:if="${productAddedSuccessfully == true}" class="success-message border-dark rounded visually-hidden">-->
+<!--        Product added successfully.-->
+<!--    </h6>-->
+
     <form class="px-4 py-3" th:action="@{/products/add}" th:method="POST" th:object="${addProductBindingModel}">
         <div class="mb-3">
             <label for="productName" class="form-label">Product Name</label>
@@ -60,7 +64,7 @@
                 Image URL cannot be blank.
             </small>
         </div>
-        <button type="submit" class="btn btn-primary">Add Product</button>
+        <button id="add-product-btn" type="submit" class="btn btn-primary">Add Product</button>
     </form>
 </main>
 

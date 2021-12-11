@@ -74,7 +74,7 @@ public class ProductController {
             redirectAttributes.addFlashAttribute("addProductBindingModel", addProductBindingModel);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.addProductBindingModel", bindingResult);
 
-            return "redirect:add-product";
+            return "redirect:add";
         }
 
         productService.addProduct(addProductBindingModel);
@@ -140,6 +140,15 @@ public class ProductController {
         productService.updateProduct(productUpdateServiceModel);
 
         return "redirect:/products/details/" + id;
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteProduct(@PathVariable Long id){
+        String productCategory = productService.getProductById(id).getCategory().getName().name().toLowerCase();
+
+        productService.deleteProduct(id);
+
+        return "redirect:/products/" + productCategory + (productCategory.endsWith("m") ? "s" : "");
     }
 
     @ExceptionHandler(ProductNotFoundException.class)
