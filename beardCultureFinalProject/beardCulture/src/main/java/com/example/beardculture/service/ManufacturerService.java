@@ -3,5 +3,7 @@ package com.example.beardculture.service;
 import com.example.beardculture.model.entity.Manufacturer;
 
 public interface ManufacturerService {
-    void addManufacturer(Manufacturer manufacturer);
+    Manufacturer addManufacturer(Manufacturer manufacturer);
+
+    Manufacturer getManufacturerByName(String manufacturerName);
 }

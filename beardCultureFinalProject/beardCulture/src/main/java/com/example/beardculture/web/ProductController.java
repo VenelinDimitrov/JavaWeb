@@ -101,7 +101,6 @@ public class ProductController {
 
         productToAdd.setQuantity(productToAdd.getQuantity() - 1);
 
-
         currentUser.getSubscriptionBox().add(productToAdd);
 
         userService.saveUser(currentUser);

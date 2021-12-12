@@ -54,11 +54,9 @@ class BeardCultureUserDetailsServiceImplTest {
 
     @Test
     public void testUserFound(){
-        //Arrange
         Mockito.when(mockUserRepository.findByUsername(testUser.getUsername()))
                 .thenReturn(Optional.of(testUser));
 
-        //Act
         var actual = serviceToTest.loadUserByUsername(testUser.getUsername());
 
         Assertions.assertEquals(actual.getUsername(), testUser.getUsername());
@@ -69,6 +67,5 @@ class BeardCultureUserDetailsServiceImplTest {
         String expectedRoles = "ROLE_ADMIN, ROLE_USER";
 
         Assertions.assertEquals(expectedRoles, actualRoles);
-
     }
 }

@@ -15,9 +15,12 @@ public class ManufacturerServiceImpl implements ManufacturerService {
     }
 
     @Override
-    public void addManufacturer(Manufacturer manufacturer) {
-        if (manufacturerRepository.findByName(manufacturer.getName()) == null){
-            manufacturerRepository.save(manufacturer);
-        }
+    public Manufacturer addManufacturer(Manufacturer manufacturer) {
+        return manufacturerRepository.save(manufacturer);
+    }
+
+    @Override
+    public Manufacturer getManufacturerByName(String manufacturerName) {
+        return manufacturerRepository.getByName(manufacturerName).orElse(null);
     }
 }

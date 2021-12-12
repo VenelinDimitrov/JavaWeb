@@ -38,11 +38,14 @@ public class ProductServiceImpl implements ProductService {
 
         Manufacturer manufacturer = new Manufacturer();
         manufacturer.setName(addProductBindingModel.getManufacturer());
-        manufacturerService.addManufacturer(manufacturer);
+
+        if (manufacturerService.getManufacturerByName(manufacturer.getName()) == null){
+            manufacturerService.addManufacturer(manufacturer);
+        }
 
         Category category = categoryService.getCategoryByName(addProductBindingModel.getCategory());
 
-        product.setManufacturer(manufacturer);
+        product.setManufacturer(manufacturerService.getManufacturerByName(manufacturer.getName()));
         product.setCategory(category);
 
         if (addProductBindingModel.getCategory() == CategoryNameEnum.OIL) {

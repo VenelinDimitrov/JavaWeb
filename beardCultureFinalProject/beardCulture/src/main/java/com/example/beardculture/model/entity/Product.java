@@ -28,7 +28,8 @@ public class Product extends BaseEntity{
         this.name = name;
     }
 
-    @Column(nullable = false, columnDefinition = "TEXT")
+    @Lob
+    @Column(nullable = false) //, columnDefinition = "TEXT")
     public String getDescription() {
         return description;
     }
@@ -55,7 +56,7 @@ public class Product extends BaseEntity{
         this.price = price;
     }
 
-    @ManyToOne(cascade = {CascadeType.ALL})
+    @ManyToOne(cascade = {CascadeType.MERGE})
     public Manufacturer getManufacturer() {
         return manufacturer;
     }
