@@ -53,6 +53,13 @@ public class UserControllerTest {
     }
 
     @Test
+    void testUnsuccessfulLogin() throws Exception {
+        mockMvc.perform(post("/users/login")
+                        .param("username", "sasho")
+                        .param("password", "invalid")).andExpect(status().is4xxClientError());
+    }
+
+    @Test
     void testUnsuccessfulRegisterUser() throws Exception {
 
         mockMvc.perform(post("/users/register")

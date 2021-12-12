@@ -16,11 +16,11 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Optional;
 
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
@@ -80,37 +80,51 @@ public class ProductControllerTest {
     @WithMockUser(username = "pesho", roles = {"USER", "MODERATOR"})
     void testOpenProductDetails() throws Exception {
 
-        mockMvc.perform(post("/products/add")
-                        .param("productName", "Name")
-                        .param("description", "Description")
-                        .param("category", "OIL")
-                        .param("quantity", "7")
-                        .param("price", "10.30")
-                        .param("manufacturer", "Beard Culture")
-                        .param("imageUrl", "ImageTestUsrl")
-                        .with(csrf())
-                        .contentType(MediaType.APPLICATION_FORM_URLENCODED))
-                .andExpect(status().is3xxRedirection());
+        createProductInRepo();
 
 
         mockMvc.perform(get("/products/details/1")).andExpect(status().isOk())
                 .andExpect(view().name("product-details"));
     }
 
+    //The below test passes on its own, but fails when running all tests.
+    // When running all tests together the product I want to edit is under ID 4, because it passes the other two methods
+    // and creates the products from them for some reason and the deleteall() method doesn't help.
+    @Test
+    @WithMockUser(username = "gosho", roles = {"USER", "MODERATOR"})
+    void testEditProduct() throws Exception {
+
+        createProductInRepo();
+
+        mockMvc.perform(patch("/products/edit/4")
+                        .param("quantity", "1")
+                        .param("price", "2.30")
+                        .param("imageUrl", "EditedImageURL")
+                .with(csrf()).contentType(MediaType.APPLICATION_FORM_URLENCODED)
+        ).andExpect(status().is3xxRedirection());
+
+        Optional<Product> optionalProd = productRepository.getByName(PRODUCT_NAME);
+
+        Assertions.assertTrue(optionalProd.isPresent());
+
+        Product product = optionalProd.get();
+
+        Assertions.assertEquals(1, product.getQuantity());
+    }
+
+    @Test
+    @WithMockUser(username = "pesho", roles = {"USER", "MODERATOR"})
+    void testOpenProductDetailsForInvalidProduct() throws Exception {
+
+        mockMvc.perform(get("/products/details/1"))
+                .andExpect(status().is4xxClientError());
+    }
+
     @Test
     @WithMockUser(username = "pesho", roles = {"USER", "MODERATOR"})
     void testAddingProduct() throws Exception {
-        mockMvc.perform(post("/products/add")
-                        .param("productName", PRODUCT_NAME)
-                        .param("description", PRODUCT_DESCRIPTION)
-                        .param("category", String.valueOf(PRODUCT_CATEGORY))
-                        .param("quantity", String.valueOf(PRODUCT_QUANTITY))
-                        .param("price", String.valueOf(PRODUCT_PRICE))
-                        .param("manufacturer", MANUFACTURER)
-                        .param("imageUrl", IMAGE_URL)
-                        .with(csrf())
-                        .contentType(MediaType.APPLICATION_FORM_URLENCODED))
-                .andExpect(status().is3xxRedirection());
+
+        createProductInRepo();
 
         Assertions.assertEquals(1, productRepository.count());
 
@@ -126,5 +140,30 @@ public class ProductControllerTest {
         Assertions.assertEquals(newlyAddedProduct.getDescription(), PRODUCT_DESCRIPTION);
         Assertions.assertEquals(newlyAddedProduct.getImageUrl(),"/images/balms/" + IMAGE_URL + ".jpg");
         Assertions.assertEquals(newlyAddedProduct.getManufacturer().getName(), MANUFACTURER);
+    }
+
+    @Test
+    @WithMockUser(username = "pesho", roles = {"USER", "MODERATOR"})
+    void testGettingAllProductsFromRepo() throws Exception {
+        createProductInRepo();
+
+        List<Product> allProducts = productService.getAllProducts();
+
+        Assertions.assertEquals(allProducts.size(), 1);
+    }
+
+    @WithMockUser(username = "pesho", roles = {"USER", "MODERATOR"})
+    public void createProductInRepo() throws Exception {
+        mockMvc.perform(post("/products/add")
+                        .param("productName", PRODUCT_NAME)
+                        .param("description", PRODUCT_DESCRIPTION)
+                        .param("category", String.valueOf(PRODUCT_CATEGORY))
+                        .param("quantity", String.valueOf(PRODUCT_QUANTITY))
+                        .param("price", String.valueOf(PRODUCT_PRICE))
+                        .param("manufacturer", MANUFACTURER)
+                        .param("imageUrl", IMAGE_URL)
+                        .with(csrf())
+                        .contentType(MediaType.APPLICATION_FORM_URLENCODED))
+                .andExpect(status().is3xxRedirection());
     }
 }
