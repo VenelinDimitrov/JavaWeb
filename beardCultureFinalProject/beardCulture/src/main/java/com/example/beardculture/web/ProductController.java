@@ -147,7 +147,13 @@ public class ProductController {
 
         productService.deleteProduct(id);
 
-        return "redirect:/products/" + productCategory + (productCategory.endsWith("m") ? "s" : "");
+        if (productCategory.equalsIgnoreCase("balm")){
+            return "redirect:/products/balms";
+        }else if (productCategory.equalsIgnoreCase("oil")){
+            return "redirect:/products/oils";
+        } else {
+            return "redirect:/products/gear";
+        }
     }
 
     @ExceptionHandler(ProductNotFoundException.class)

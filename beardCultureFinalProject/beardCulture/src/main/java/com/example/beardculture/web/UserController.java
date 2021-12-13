@@ -71,10 +71,10 @@ public class UserController {
                                  BindingResult bindingResult, RedirectAttributes redirectAttributes, Principal principal){
 
         if (bindingResult.hasErrors()){
-            redirectAttributes.addFlashAttribute("offerModel", updateUserDetailsBindingModel);
+            redirectAttributes.addFlashAttribute("updateUserDetailsBindingModel", updateUserDetailsBindingModel);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.updateUserDetailsBindingModel", bindingResult);
 
-            return "redirect:my-account";
+            return "redirect:account";
         }
 
         UserDetailsUpdateServiceModel userDetailsUpdateServiceModel = modelMapper.map(updateUserDetailsBindingModel,
