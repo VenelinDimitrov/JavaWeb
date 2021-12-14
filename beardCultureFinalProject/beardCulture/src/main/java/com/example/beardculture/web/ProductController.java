@@ -95,7 +95,7 @@ public class ProductController {
         User currentUser = userService.getUserByUsername(principal.getName());
 
         if (currentUser.getSubscriptionBox().contains(productToAdd)){
-            //TODO triger pop-up message that the product already exists in subscription box
+            //TODO trigger pop-up message that the product already exists in subscription box
             return "redirect:/details/" + id;
         }
 

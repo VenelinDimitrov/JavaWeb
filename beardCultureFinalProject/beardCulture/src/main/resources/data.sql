@@ -1,0 +1,45 @@
+INSERT INTO manufacturers('name')
+VALUE
+    ('Viking Revolution'),
+    ('Cremo'),
+    ('Striking Viking'),
+    ('Jack Black'),
+    ('Bossman'),
+    ('WAHL'),
+    ('Honest Amish'),
+    ('Hunter Jack'),
+    ('Grow Alpha Beard'),
+    ('Seven Potions');
+
+INSERT INTO products (description, image_url, name, price, quantity, category_id, manufacturer_id)
+VALUES
+('Combining powerful Argan and Jojoba oils, this deeply nourishing beard treatment is 100% natural and organic, so it’s safe to use every day as part of your beard maintenance routine. The easy to use beard oil takes seconds to apply – place a few drops on the palm of your hand and massage in to your face and beard. 
+', 'Beard oil 1', 'Sandalwood Scent Beard Oil', 12.40, 25, 1, 1),
+('No matter what length of beard you sport, Cremo Beard Oil is the single most critical product for one''s daily regimen. It relieves itchiness and dryness, leaving your beard looking healthy and smelling fresh. Short facial hair remains sharp from shaving and curves back into your skin causing itching and irritation. Older, longer hair loses it''s natural moisture, leading to damaged hair, flaking and more irritation. Our astonishing formula contains the highest quality natural Argan and Jojoba oils and other carefully selected ingredients. They work to moisturize, restore and condition your beard as well as your underlying skin so you can come back to civilization.', '/images/oils/Beard oil 2.jpg',
+ 'Revitalizing Beard Oil', 10.65, 36, 1, 2),
+('Handcrafted with all natural and 100% organic ingredients which are easily absorbed, leaving your beard and mustache full and healthy. Formulated to promote beard growth, tame wild beard hairs and make your beard softer to the touch. Your beard will look and feel healthier all year long!',
+ '/images/oils/Beard oil 3.jpg', 'Vanilla Beard Oil', 9.90, 17, 1, 3),
+ ('Jack Black Beard Oil is an exclusive blend of certified organic natural oils, potent antioxidants, and vitamins that helps to prevent dry, itchy skin. It hydrates and softens dry, brittle facial hair for a healthy shine.',
+  '/images/oils/Beard oil 4.jpg', 'Jack Black - Beard Oil', 13.25, 19, 1, 4),
+('Our Jelly Beard Oil is more effective than traditional beard oils because of its thicker viscosity which allows for a more even coat that lasts longer. It will help you eliminate beard itch, grow a thicker, fuller beard, and is made from all-natural ingredients safe to use on your face.',
+ '/images/oils/Beard oil 5.jpg', 'Jelly Beard Oil', 8.99, 13, 1, 5),
+('The moisturizing beard balm also penetrates at the root of the hair, nourishing the skin to prevent flaking and beard dandruff and that annoying dry-skin itch without leaving any residue. Packed with Argan Oil, Jojoba Oil, Mango Butter and Beeswax, we’ve finished the beard treatment with a sandalwood scent for all day freshness.',
+ '/images/balms/Beard balm 1.jpg', 'Sandalwood Scent Beard Balm', 9.88, 20, 2, 1),
+('The moisturizing beard balm also penetrates at the root of the hair, nourishing the skin to prevent flaking and beard dandruff and that annoying dry-skin itch without leaving any residue. Packed with Argan Oil, Jojoba Oil, Mango Butter and Beeswax, we’ve finished the beard treatment with a clean citrus scent for all day freshness.',
+ '/images/balms/Beard balm 2.jpg', 'Bay Rum Beard Balm', 9.99, 16, 2, 1),
+('With Wahl’s Beard Softener, you''re only seconds away from a significantly softened and deep-conditioned beard. Wahl’s formula features powerful moisturizers and beard-specific conditioners that penetrate coarse facial hair to soften from the inside, giving you, and those close to you, a superior soft beard.',
+ '/images/balms/Beard balm 3.jpg', 'Beard Creme', 8.16, 12, 2, 6),
+('Handcrafted with all-natural and organic ingredients which are easily absorbed, leaving your beard and mustache full and healthy. Our unique blend is specially formulated to promote beard growth, tame wild beard hairs, and make your beard softer to the touch.',
+ '/images/balms/Beard balm 4.jpg', 'Vanilla Beard Balm', 9.82, 23, 2 ,3),
+('Honest Amish Beard Balm is created from the finest organic ingredients available. We start with a proprietary blend of hair strengthening botanical infused in a base of Virgin Argan, Avocado, Almond, Virgin Pumpkin Seed, and Apricot Kernel Oils. It is then masterfully crafted with fruit and nut butters (Shea, Aloe, Cocoa, Kokum, to name a few), and hair enhancing essential oils. Subtle scents of Cedarwood, Anise (licorice), and Clove. ',
+ '/images/balms/Beard balm 5.jpg', 'Honest Amish Beard Balm', 11.43, 19, 2, 7),
+('Combining premium materials, unique craftsmanship and a practical design, this wood beard comb is an essential addition to your pocket. The perfect grooming product for busy guys on the go, this travel comb is made of all-natural green sandalwood, and has wide teeth with an anti-static construction for comfortable, irritation free styling and detangling.',
+ '/images/gear/Gear 1.jpg', 'Wooden Beard Comb', 7.88, 34, 3, 1),
+('This comb is sure to make for a memorable birthday gift, Father''s Day gift, graduation gift, anniversary gift or holiday gift for yourself or that bearded someone in your life. Great beard kit for men gift option! Perfect gifts for dad and gifts for men. Winner in wooden beard combs for men category',
+ '/images/gear/Gear 2.jpg', 'Beard Comb', 12.95, 27, 3, 8),
+('The boar bristle bamboo brush and wood comb set massages your facial hair, stimulates oil production, and removes dirt, thereby keeping your facial hair and skin healthy. Anti-static wood comb detangles wet and dry beards with ease.',
+ '/images/gear/Gear 3.jpg', 'Grooming Kit', 9.98, 42, 3, 9),
+('The Seven Potions Boar Bristle Brush is your unmatched secret weapon. No beard stands a chance at being unkempt with this expertly designed brush in your hand. Made of 100% firm, first cut, natural wild boar bristles and an oval pear wood body, it is designed with an ideal shape that will fit in the palm of your hand perfectly.',
+ '/images/gear/Gear 4.jpg', 'Beard Brush', 17.99, 33, 3, 10),
+('Cremo''s Beard Brush is the right tool for shaping, styling and grooming your facial hair. Made of 100% Natural Boar Bristle, our brush applies balm, cream and oils far better than synthetic bristle. Use brush to massage skin beneath the beard and to remove “beard-druff” and residue for clean and fresh looking facial hair. Presented in a handsome box, it''s the perfect gift for any gentleman with facial hair.',
+'/images/gear/Gear 5.jpg', 'Boar Bristle Beard Brush', 13.52, 22, 3, 2);

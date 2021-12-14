@@ -59,6 +59,5 @@ public class ApplicationInit implements CommandLineRunner {
 
             productService.saveProduct(product);
         });
-
     }
 }
