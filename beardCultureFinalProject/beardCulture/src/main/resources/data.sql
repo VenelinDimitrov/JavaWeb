@@ -1,5 +1,5 @@
-INSERT INTO manufacturers('name')
-VALUE
+INSERT INTO manufacturers(name)
+VALUES
     ('Viking Revolution'),
     ('Cremo'),
     ('Striking Viking'),
@@ -13,8 +13,8 @@ VALUE
 
 INSERT INTO products (description, image_url, name, price, quantity, category_id, manufacturer_id)
 VALUES
-('Combining powerful Argan and Jojoba oils, this deeply nourishing beard treatment is 100% natural and organic, so it’s safe to use every day as part of your beard maintenance routine. The easy to use beard oil takes seconds to apply – place a few drops on the palm of your hand and massage in to your face and beard. 
-', 'Beard oil 1', 'Sandalwood Scent Beard Oil', 12.40, 25, 1, 1),
+('Combining powerful Argan and Jojoba oils, this deeply nourishing beard treatment is 100% natural and organic, so it’s safe to use every day as part of your beard maintenance routine. The easy to use beard oil takes seconds to apply – place a few drops on the palm of your hand and massage in to your face and beard. ',
+ '/images/oils/Beard oil 1.jpg', 'Sandalwood Scent Beard Oil', 12.40, 25, 1, 1),
 ('No matter what length of beard you sport, Cremo Beard Oil is the single most critical product for one''s daily regimen. It relieves itchiness and dryness, leaving your beard looking healthy and smelling fresh. Short facial hair remains sharp from shaving and curves back into your skin causing itching and irritation. Older, longer hair loses it''s natural moisture, leading to damaged hair, flaking and more irritation. Our astonishing formula contains the highest quality natural Argan and Jojoba oils and other carefully selected ingredients. They work to moisturize, restore and condition your beard as well as your underlying skin so you can come back to civilization.', '/images/oils/Beard oil 2.jpg',
  'Revitalizing Beard Oil', 10.65, 36, 1, 2),
 ('Handcrafted with all natural and 100% organic ingredients which are easily absorbed, leaving your beard and mustache full and healthy. Formulated to promote beard growth, tame wild beard hairs and make your beard softer to the touch. Your beard will look and feel healthier all year long!',
