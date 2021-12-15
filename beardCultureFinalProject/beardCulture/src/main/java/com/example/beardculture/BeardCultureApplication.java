@@ -10,6 +10,6 @@ public class BeardCultureApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(BeardCultureApplication.class, args);
-    }
 
+    }
 }
